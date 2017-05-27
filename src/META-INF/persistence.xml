@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="mongoPU1" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
+    <class>testemongo.User</class>
+    <properties>
+      <property name="hibernate.ogm.datastore.provider" value="MONGODB"/>
+      <property name="hibernate.ogm.datastore.database" value="newlibrary_mongo"/>
+      <!--      <property name="hibernate.ogm.datastore.create_database" value="true"/>-->
+      <property name="hibernate.ogm.datastore.host" value="localhost"/>
+      <property name="hibernate.ogm.datastore.username" value=""/>
+      <property name="hibernate.ogm.datastore.password" value=""/>
+    </properties>
+  </persistence-unit>
+  <persistence-unit name="mongoPU2">
+    <provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
+    <class>testemongo.User</class>
+    <properties>
+      <property name="hibernate.ogm.datastore.provider" value="MONGODB"/>
+      <property name="hibernate.ogm.datastore.database" value="test"/>
+      <property name="hibernate.ogm.datastore.host" value="localhost"/>
+    </properties>
+  </persistence-unit>
+</persistence>
