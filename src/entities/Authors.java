@@ -33,12 +33,12 @@ public class Authors implements Serializable {
     private String authorAbout;
 
     /*Relaciona autor com um lingua*/
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "language_id")
     private Languages authorLanguage;
 
     /*relaciona author com um pais*/
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "country_id")
     private Countries authorCountry;
 

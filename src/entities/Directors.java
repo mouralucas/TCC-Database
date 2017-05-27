@@ -34,11 +34,11 @@ public class Directors implements Serializable {
     private String directorAbout;
 
     /*relaciona director com um pais*/
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "country_id")
     private Countries directorCountry;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "movieDirector")
+    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "movieDirector")
     private List<Movies> movies;
 
     @ManyToMany(mappedBy = "tvSerieDirectors")

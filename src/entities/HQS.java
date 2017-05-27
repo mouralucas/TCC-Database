@@ -39,34 +39,34 @@ public class HQS implements Serializable {
     private String hqSynopsis;
     private String hqObservation;
 
-    /*Relaçãoe entre livro e autor*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    /*Relação entre livro e autor*/
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "HQ_Author",
             joinColumns = @JoinColumn(name = "hq_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private List<Authors> hqAuthors;
 
     /*relação entre livro e serie*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "HQ_BookSerie",
             joinColumns = @JoinColumn(name = "hq_id"),
             inverseJoinColumns = @JoinColumn(name = "bookSerie_id"))
     private List<BookSeries> hqSeries;
 
     /*reaciona livro com lingua*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "HQ_Language",
             joinColumns = @JoinColumn(name = "hq_id"),
             inverseJoinColumns = @JoinColumn(name = "language_id"))
     private List<Languages> hqLanguages;
 
     /*relaciona livro com editora*/
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "publisher_id")
     private Publishers hqPublisher;
 
     /*relaciona livro com generos*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "HQ_Genre",
             joinColumns = @JoinColumn(name = "hq_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id)"))

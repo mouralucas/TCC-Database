@@ -31,7 +31,7 @@ public class Actors implements Serializable {
     private String actorName;
     private String actorAbout;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "country_id")
     private Countries actorCountry;
 

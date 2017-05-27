@@ -40,33 +40,33 @@ public class Mangas implements Serializable {
     private String mangaObservation;
 
     /*Relaçãoe entre livro e autor*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "Manga_Author",
             joinColumns = @JoinColumn(name = "manga_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private List<Authors> mangaAuthors;
 
     /*relação entre livro e serie*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "Manga_BookSerie",
             joinColumns = @JoinColumn(name = "manga_id"),
             inverseJoinColumns = @JoinColumn(name = "bookSerie_id"))
     private List<BookSeries> mangaSeries;
 
-    /*reaciona livro com lingua*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    /*relaciona livro com lingua*/
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "Manga_Language",
             joinColumns = @JoinColumn(name = "manga_id"),
             inverseJoinColumns = @JoinColumn(name = "language_id"))
     private List<Languages> mangaLanguages;
 
     /*relaciona livro com editora*/
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "publisher_id")
     private Publishers mangaPublisher;
 
     /*relaciona livro com generos*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "Manga_Genre",
             joinColumns = @JoinColumn(name = "manga_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id)"))

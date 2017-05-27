@@ -1,5 +1,8 @@
 package newLibrary_v7;
 
+import Conn.Connection;
+import entities.Languages;
+
 /**
  * @author Jociane Franzoni de Lima
  * @author Lucas Penha de Moura
@@ -12,6 +15,16 @@ package newLibrary_v7;
 
 public class InitSystem {
     public static void main(String args[]){
-        //as treta vão aqui
+        Connection.setCon();
+        InsertLanguages il = new InsertLanguages();
+        il.insert();
+        
+
+        Languages l2 = Connection.getCon().find(Languages.class, 1);
+        if (l2 != null) {
+            System.out.println("Name: " + l2.getLanguageName());
+        } else {
+            System.out.println("Error");
+        }
     }
 }

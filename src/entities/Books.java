@@ -41,33 +41,33 @@ public class Books implements Serializable {
     private String bookObservation;
 
     /*Relações entre livro e autor*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "Book_Author",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private List<Authors> bookAuthors;
 
     /*relação entre livro e serie*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "Book_BookSerie",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "bookSerie_id"))
     private List<BookSeries> bookSeries;
 
     /*reaciona livro com lingua*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "Book_Language",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "language_id"))
     private List<Languages> bookLanguages;
 
     /*relaciona livro com editora*/
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "publisher_id")
     private Publishers bookPublisher;
 
     /*Relaciona Book com Genres*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "Book_Genre",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))

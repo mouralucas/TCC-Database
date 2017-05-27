@@ -31,7 +31,7 @@ public class Writers implements Serializable {
     private String writerName;
     private String writerAbout;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "country_id")
     private Countries writerCountry;
 

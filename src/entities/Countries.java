@@ -29,7 +29,7 @@ public class Countries implements Serializable {
     private String countryName;
     private int priority;
     /*--------relações com livros-------------*/
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "publisherCountry")
+    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "publisherCountry")
     private List<Publishers> publishers;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "authorCountry")
@@ -37,22 +37,22 @@ public class Countries implements Serializable {
     /*----fim relações com livros-------------*/
 
  /*--------relações com filmes e series-------------*/
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "directorCountry")
+    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "directorCountry")
     private List<Directors> directors;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "actorCountry")
+    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "actorCountry")
     private List<Actors> actors;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "writerCountry")
+    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "writerCountry")
     private List<Writers> writers;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "networkCountry")
+    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "networkCountry")
     private List<Networks> networks;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "movieCountry")
+    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "movieCountry")
     private List<Movies> movies;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tvSerieCountry")
+    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "tvSerieCountry")
     private List<TVSeries> tvSeries;
 
     /*----fim relações com filmes e series-------------*/

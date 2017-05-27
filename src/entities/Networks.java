@@ -31,7 +31,7 @@ public class Networks implements Serializable {
     private String networkName;
     private String networkAbout;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "country_id")
     private Countries networkCountry;
 

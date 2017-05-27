@@ -35,52 +35,52 @@ public class TVSeries {
     private String tvSerieSynopsis;
 
     /*Relaciona TVSerie com Genres*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "TVSerie_Genre",
             joinColumns = @JoinColumn(name = "tvSerie_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private List<Genres> tvSerieGenres;
 
     /*Relaciona TVSerie com Actors*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "TVSerie_Actor",
             joinColumns = @JoinColumn(name = "tvSerie_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id"))
     private List<Actors> tvSerieActors;
 
     /*Relaciona TVSerie com Directors*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "TVSerie_Director",
             joinColumns = @JoinColumn(name = "tvSerie_id"),
             inverseJoinColumns = @JoinColumn(name = "director_id"))
     private List<Directors> tvSerieDirectors;
 
     /*Relacioba TVSerie com writer*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "TVSerie_Writer",
             joinColumns = @JoinColumn(name = "tvSeries_id"),
             inverseJoinColumns = @JoinColumn(name = "writer_id"))
     private List<Writers> tvSerieWriters;
 
     /*Relaciona TVSerie com country*/
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "country_id")
     private Countries tvSerieCountry;
 
     /*Relaciona TVSerie com languages*/
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "language_id")
     private Languages tvSerieLanguage;
 
     /*Relaciona TVSerie com Network*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "TVSerie_Network",
             joinColumns = @JoinColumn(name = "tvSerie_id"),
             inverseJoinColumns = @JoinColumn(name = "network_id"))
     private List<Networks> tvSerieNetworks;
 
     /*Relaciona Movie com Book*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "TVSerie_Book",
             joinColumns = @JoinColumn(name = "tvSerie_id"),
             inverseJoinColumns = @JoinColumn(name = "book_id"))

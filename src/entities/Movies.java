@@ -38,51 +38,51 @@ public class Movies implements Serializable {
 
     /*One to Many*/
 	/*Relaciona Movie com Directors*/
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "director_id")
     private Directors movieDirector;
 
     /*Relaciona movie com country*/
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "country_id")
     private Countries movieCountry;
 
     /*Relaciona movie com languages*/
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "language_id")
     private Languages movieLanguage;
 
     /*Many to Many*/
 	/*Relacioba movie com writer*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "Movie_Writer",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "writer_id"))
     private List<Writers> movieWriters;
 
     /*Relaciona Movie com Genres*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "Movie_Genre",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private List<Genres> movieGenres;
 
     /*Relaciona Movie com Actors*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "Movie_Actor",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id"))
     private List<Actors> movieActors;
 
     /*Relaciona Movie com Network*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "Movie_Network",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "network_id"))
     private List<Networks> movieNetworks;
 
     /*Relaciona Movie com Book*/
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.REFRESH})
     @JoinTable(name = "Movie_Book",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "book_id"))

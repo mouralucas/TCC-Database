@@ -31,17 +31,17 @@ public class Publishers implements Serializable {
     private String publisherName;
     private String publisherAbout;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "country_id")
     private Countries publisherCountry;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "bookPublisher")
+    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "bookPublisher")
     private List<Books> books;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "mangaPublisher")
+    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "mangaPublisher")
     private List<Mangas> mangas;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hqPublisher")
+    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "hqPublisher")
     private List<HQS> hqs;
 
     /*--------------------Constructors-------------------*/

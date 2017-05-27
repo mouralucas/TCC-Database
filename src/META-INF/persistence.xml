@@ -1,24 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="mongoPU1" transaction-type="RESOURCE_LOCAL">
-    <provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
-    <class>testemongo.User</class>
-    <properties>
-      <property name="hibernate.ogm.datastore.provider" value="MONGODB"/>
-      <property name="hibernate.ogm.datastore.database" value="newlibrary_mongo"/>
-      <!--      <property name="hibernate.ogm.datastore.create_database" value="true"/>-->
-      <property name="hibernate.ogm.datastore.host" value="localhost"/>
-      <property name="hibernate.ogm.datastore.username" value=""/>
-      <property name="hibernate.ogm.datastore.password" value=""/>
-    </properties>
-  </persistence-unit>
-  <persistence-unit name="mongoPU2">
-    <provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
-    <class>testemongo.User</class>
-    <properties>
-      <property name="hibernate.ogm.datastore.provider" value="MONGODB"/>
-      <property name="hibernate.ogm.datastore.database" value="test"/>
-      <property name="hibernate.ogm.datastore.host" value="localhost"/>
-    </properties>
-  </persistence-unit>
+    <persistence-unit name="mongo_PU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
+        <class>com.mycompany.testogm1.User</class>
+        <class>entities.Actors</class>
+        <class>entities.Authors</class>
+        <class>entities.BookSeries</class>
+        <class>entities.Books</class>
+        <class>entities.Countries</class>
+        <class>entities.Directors</class>
+        <class>entities.Genres</class>
+        <class>entities.HQS</class>
+        <class>entities.Languages</class>
+        <class>entities.Mangas</class>
+        <class>entities.Movies</class>
+        <class>entities.Networks</class>
+        <class>entities.Publishers</class>
+        <class>entities.TVSeries</class>
+        <class>entities.Users</class>
+        <class>entities.Writers</class>
+        <properties>
+            <property name="hibernate.ogm.datastore.provider" value="mongodb"/>
+            <property name="hibernate.ogm.datastore.database" value="newlibrary_mongo"/>
+            <property name="hibernate.ogm.datastore.create_database" value="true"/>
+            <property name="hibernate.ogm.datastore.host" value="localhost:27017"/>
+            <property name="hibernate.ogm.datastore.username" value="" />
+            <property name="hibernate.ogm.datastore.password" value="" />      
+        </properties>
+    </persistence-unit>
+  
+  
+    <persistence-unit name="mysql_PU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>entities.Actors</class>
+        <class>entities.Authors</class>
+        <class>entities.BookSeries</class>
+        <class>entities.Books</class>
+        <class>entities.Countries</class>
+        <class>entities.Directors</class>
+        <class>entities.Genres</class>
+        <class>entities.HQS</class>
+        <class>entities.Languages</class>
+        <class>entities.Mangas</class>
+        <class>entities.Movies</class>
+        <class>entities.Networks</class>
+        <class>entities.Publishers</class>
+        <class>entities.TVSeries</class>
+        <class>entities.Users</class>
+        <class>entities.Writers</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/newlibrary_v4?zeroDateTimeBehavior=convertToNull"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.password" value="rachel"/>
+            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        </properties>
+    </persistence-unit>
+  
 </persistence>

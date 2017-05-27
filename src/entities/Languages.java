@@ -31,15 +31,15 @@ public class Languages implements Serializable {
     private int priority;
 
     /*relaciona movie com language*/
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "movieLanguage")
+    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "movieLanguage")
     private List<Movies> movies;
 
     /*relaciona TVSeries com language*/
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tvSerieLanguage")
+    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "tvSerieLanguage")
     private List<TVSeries> tvSeries;
 
     /*relaciona autor com lingua de escrita*/
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "authorLanguage")
+    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "authorLanguage")
     private List<Authors> authors;
 
     /*relaciona livro com os idiamas contidos nele*/
