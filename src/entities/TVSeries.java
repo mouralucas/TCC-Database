@@ -1,5 +1,6 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -11,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author Jociane Franzoni de Lima
@@ -24,12 +27,13 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "tvseries")
-public class TVSeries {
+public class TVSeries implements Serializable {
 
     @Id
     @GeneratedValue
     private int tvSerie_id;
     private String serieName;
+    @Temporal(TemporalType.DATE)
     private Date tvSerieReleaseDate;
     private int tvSerieLenght;
     private String tvSerieSynopsis;

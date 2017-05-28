@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author Jociane Franzoni de Lima
@@ -32,6 +34,7 @@ public class Movies implements Serializable {
     private int movie_id;
     private String movieTitle;
     private String movieSubTitle;
+    @Temporal(TemporalType.DATE)
     private Date movieReleaseDate;
     private int movieLenght;
     private String movieSynopsis;

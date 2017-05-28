@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author Jociane Franzoni de Lima
@@ -34,6 +36,7 @@ public class Books implements Serializable {
     private String bookTitle;
     private String bookSubTitle;
     private int booksPages;
+    @Temporal(TemporalType.DATE)
     private Date bookPublishingDate;
     private double bookCoverPrice;
     private int bookEdition;

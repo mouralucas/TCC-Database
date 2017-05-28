@@ -12,6 +12,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * @author Jociane Franzoni de Lima
@@ -34,6 +36,7 @@ public class Mangas implements Serializable {
     private String mangaTitle;
     private int mangaVolume;
     private int mangaPages;
+    @Temporal(TemporalType.DATE)
     private Date mangaPublishingDate;
     private double mangaCoverPrice;
     private String mangaSynopsis;
