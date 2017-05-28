@@ -2,8 +2,10 @@ package entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
@@ -24,6 +26,7 @@ public class Genres implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "genre_id", nullable = false)
     private int genre_id;
     private String genreName;
 

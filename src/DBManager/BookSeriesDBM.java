@@ -17,9 +17,9 @@ import javax.persistence.EntityManager;
 public class BookSeriesDBM {
 
     /*---------------------- Insertion BookSerie Query ------------------------*/
-    public boolean insertBookSeries(BookSeries bookSeries, EntityManager em) {
+    public boolean insertBookSeries(BookSeries bookSeries) {
         try {
-            em.merge(bookSeries);
+            Connection.getCon().merge(bookSeries);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

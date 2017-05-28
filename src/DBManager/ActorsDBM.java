@@ -18,9 +18,9 @@ import javax.persistence.EntityManager;
 public class ActorsDBM {
 
     /*---------------------- Insertion Actros Query ------------------------*/
-    public boolean insertActors(Actors actor, EntityManager em) {
+    public boolean insertActors(Actors actor) {
         try {
-            em.merge(actor);
+            Connection.getCon().merge(actor);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

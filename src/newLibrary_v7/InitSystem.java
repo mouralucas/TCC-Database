@@ -1,7 +1,6 @@
 package newLibrary_v7;
 
 import Conn.Connection;
-import entities.Languages;
 
 /**
  * @author Jociane Franzoni de Lima
@@ -12,19 +11,19 @@ import entities.Languages;
  * ------------- Universidade Tecnológica Federal do Paraná ---------------
  *
  */
-
 public class InitSystem {
-    public static void main(String args[]){
+
+    public static void main(String args[]) {
         Connection.setCon();
-        InsertLanguages il = new InsertLanguages();
-        il.insert();
+        
+        //Execute this to fill booth MySQL and MongoDB
+//        InsertData insertData = new InsertData();
+//        insertData.insertAllData();
+
         
 
-        Languages l2 = Connection.getCon().find(Languages.class, 1);
-        if (l2 != null) {
-            System.out.println("Name: " + l2.getLanguageName());
-        } else {
-            System.out.println("Error");
-        }
+        
+        System.out.println("Connection Done");
+        Connection.closeCon();
     }
 }

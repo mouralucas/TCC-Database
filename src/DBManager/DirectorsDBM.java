@@ -18,9 +18,9 @@ import javax.persistence.EntityManager;
 public class DirectorsDBM {
 
     /*---------------------- Insertion Director Query ------------------------*/
-    public boolean insertDirectors(Directors directors, EntityManager em) {
+    public boolean insertDirectors(Directors directors) {
         try {
-            em.merge(directors);
+            Connection.getCon().merge(directors);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

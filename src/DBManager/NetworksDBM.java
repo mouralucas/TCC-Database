@@ -13,9 +13,9 @@ import javax.persistence.EntityManager;
 public class NetworksDBM {
 
     /*---------------------- Insertion Network Query ------------------------*/
-    public boolean insertNetworks(Networks network, EntityManager em) {
+    public boolean insertNetworks(Networks network) {
         try {
-            em.merge(network);
+            Connection.getCon().merge(network);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

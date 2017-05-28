@@ -18,9 +18,9 @@ import javax.persistence.EntityManager;
 public class WritersDBM {
 
     /*---------------------- Insertion Writer Query ------------------------*/
-    public boolean insertWriters(Writers writers, EntityManager em) {
+    public boolean insertWriters(Writers writers) {
         try {
-            em.merge(writers);
+            Connection.getCon().merge(writers);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

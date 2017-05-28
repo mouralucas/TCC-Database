@@ -3,6 +3,7 @@ package entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -27,6 +28,7 @@ public class Actors implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "actor_id")
     private int actor_id;
     private String actorName;
     private String actorAbout;
