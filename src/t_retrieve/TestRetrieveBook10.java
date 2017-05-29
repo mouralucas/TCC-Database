@@ -6,8 +6,8 @@
 package t_retrieve;
 
 import Conn.Connection;
-import DBManager.MoviesDBM;
-import entities.Movies;
+import DBManager.BooksDBM;
+import entities.Books;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +20,12 @@ import t_files.OpenTestFiles;
  *
  * @author lucas
  */
-public class testRetrieveMovie extends AbstractJavaSamplerClient implements Serializable {
+public class TestRetrieveBook10 extends AbstractJavaSamplerClient implements Serializable {
 
     OpenTestFiles openTestFiles = new OpenTestFiles();
-    MoviesDBM moviesDBM = new MoviesDBM();
-
-    private List<Movies> movies = new ArrayList<>();
-    private List<Object> retrievedMovies = new ArrayList<>();
+    BooksDBM booksDBM = new BooksDBM();
+    
+    private List<Object> retrievedBooks = new ArrayList<>();
     List<String[]> inserts = new ArrayList<>();
 
     private final String testSize = "10";
@@ -38,30 +37,26 @@ public class testRetrieveMovie extends AbstractJavaSamplerClient implements Seri
         return result;
     }
 
+    //isbn
     //title
-    //director
-    //writer
-    //actor
-    //network
-    //book
+    //author
+    //serie
+    //publisher
     public void testMethod() {
         SampleResult result = new SampleResult();
-        inserts = openTestFiles.open("retrieve\\retrieveMovies", testSize);
+        inserts = openTestFiles.open("retrieve\\retrieveBooks", testSize);
         
-                result.sampleStart();
+        result.sampleStart();
         Connection.getCon().getTransaction().begin();
         inserts.forEach((iterator) -> {
-            Object movie;
-            //verificar a ordem salva no vetor com a ordem dos parametros do retrieveMovies
-            movie = moviesDBM.retrieveMovieByMultipleValues(iterator[0], iterator[1], iterator[2], iterator[3], iterator[4], iterator[5]);
-            retrievedMovies.add(movie);
+            Object book;
+            //verificar a ordem salva no vetor com a ordem dos parametros do retrieveBooks
+            book = booksDBM.retrieveBookByMultipleValues(iterator[0], iterator[1], iterator[2], iterator[3], iterator[4]);
+            retrievedBooks.add(book);
         });
         Connection.getCon().getTransaction().commit();
         result.sampleEnd();
         System.out.println("\n\nTempo de execução do teste: " + result.getTime());
         result.setSuccessful(true);
-        
-        
     }
-
 }
