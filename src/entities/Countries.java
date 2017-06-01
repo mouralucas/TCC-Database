@@ -4,55 +4,46 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 /**
- * @author Jociane Franzoni de Lima
- * @author Lucas Penha de Moura
  *
- * ------------------- Trabalho de Conclusão de Curso ---------------------
- * ---------------------- Engenharia de Computação ------------------------
- * ------------- Universidade Tecnológica Federal do Paraná ---------------
- *
+ * @author Lucas e Jociane
  */
-
 @Entity
-@Table(name = "countries")
 public class Countries implements Serializable {
 
     @Id
-    @GeneratedValue
     private int country_id;
     private String countryName;
     private int priority;
+    
     /*--------relações com livros-------------*/
-    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "publisherCountry")
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "publisherCountry")
     private List<Publishers> publishers;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "authorCountry")
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "authorCountry")
     private List<Authors> authors;
     /*----fim relações com livros-------------*/
 
  /*--------relações com filmes e series-------------*/
-    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "directorCountry")
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "directorCountry")
     private List<Directors> directors;
 
-    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "actorCountry")
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "actorCountry")
     private List<Actors> actors;
 
-    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "writerCountry")
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "writerCountry")
     private List<Writers> writers;
 
-    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "networkCountry")
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "networkCountry")
     private List<Networks> networks;
 
-    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "movieCountry")
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "movieCountry")
     private List<Movies> movies;
 
-    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "tvSerieCountry")
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "tvSerieCountry")
     private List<TVSeries> tvSeries;
 
     /*----fim relações com filmes e series-------------*/
@@ -60,7 +51,8 @@ public class Countries implements Serializable {
     public Countries() {
     }
 
-    public Countries(String countryName, int priority) {
+    public Countries(int country_id, String countryName, int priority) {
+        this.country_id = country_id;
         this.countryName = countryName;
         this.priority = priority;
     }

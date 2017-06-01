@@ -1,26 +1,23 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entities;
 
+/**
+ *
+ * @author Lucas e Jociane
+ */
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- * @author Jociane Franzoni de Lima
- * @author Lucas Penha de Moura
- *
- * ------------------- Trabalho de Conclusão de Curso ---------------------
- * ---------------------- Engenharia de Computação ------------------------
- * ------------- Universidade Tecnológica Federal do Paraná ---------------
- *
- */
-
 @Entity
-@Table(name = "users")
 public class Users implements Serializable {
 
     @Id
@@ -36,14 +33,6 @@ public class Users implements Serializable {
     @Column(name = "lastAccess", unique = true)
     @Temporal(TemporalType.DATE)
     private Date ultimoAcesso;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNomeUsuario() {
         return nomeUsuario;
@@ -68,6 +57,4 @@ public class Users implements Serializable {
     public void setUltimoAcesso(Date ultimoAcesso) {
         this.ultimoAcesso = ultimoAcesso;
     }
-
-    
 }

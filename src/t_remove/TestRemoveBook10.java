@@ -27,11 +27,8 @@ public class TestRemoveBook10 extends AbstractJavaSamplerClient implements Seria
     private boolean conn = Connection.setCon();
     OpenTestFiles openTestFiles = new OpenTestFiles();
     private BooksDBM booksDBM = new BooksDBM();
-
     private final String testSize = "10";
-    
     Books booksAux = new Books();
-    
     List<Object> objectReferenceBooks = new ArrayList<>();
     List<Books> books = new ArrayList<>();
     List<String[]> removeList = new ArrayList<>();
@@ -40,20 +37,23 @@ public class TestRemoveBook10 extends AbstractJavaSamplerClient implements Seria
     @Override
     public SampleResult runTest(JavaSamplerContext jsc) {
 
-        SampleResult result = new SampleResult();
+      SampleResult result = new SampleResult();
         removeList = openTestFiles.open("removeBooks", testSize);
         
         for(String[] remove: removeList){
-             objectReferenceBooks.add(booksDBM.retrieveBookByTitle(remove[0]).get(0));
+            String aux = remove[0];
+            if(aux != null) {
+                objectReferenceBooks.add(booksDBM.retrieveBookByTitle(aux).get(0));
+            }
         }
         
         result.sampleStart();
         Iterator itr = objectReferenceBooks.iterator();
         while (itr.hasNext()) {
-            
-//            Object[] obj = (Object[]) itr.next();
-//            int i = Integer.valueOf((String) obj[0]);
-//             books.add(booksAux.setBook_id(x));
+            Object[] obj = (Object[]) itr.next();
+            int i = Integer.valueOf(String.valueOf(obj[0]));
+            booksAux.setBook_id(i);
+            books.add(booksAux);
         }
         
         Connection.getCon().getTransaction().begin();
@@ -75,14 +75,19 @@ public class TestRemoveBook10 extends AbstractJavaSamplerClient implements Seria
         removeList = openTestFiles.open("removeBooks", testSize);
         
         for(String[] remove: removeList){
-             objectReferenceBooks.add(booksDBM.retrieveBookByTitle(remove[0]).get(0));
+            String aux = remove[0];
+            if(aux != null) {
+                objectReferenceBooks.add(booksDBM.retrieveBookByTitle(aux).get(0));
+            }
         }
         
         result.sampleStart();
         Iterator itr = objectReferenceBooks.iterator();
         while (itr.hasNext()) {
-//            Object[] obj = (Object[]) itr.next();
-//             books.add(booksAux.setBook_id((obj[0])));
+            Object[] obj = (Object[]) itr.next();
+            int i = Integer.valueOf(String.valueOf(obj[0]));
+            booksAux.setBook_id(i);
+            books.add(booksAux);
         }
         
         Connection.getCon().getTransaction().begin();

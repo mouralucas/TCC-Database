@@ -1,30 +1,25 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entities;
 
 import enums.SerieTypeEnum;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 
 /**
- * @author Jociane Franzoni de Lima
- * @author Lucas Penha de Moura
  *
- * ------------------- Trabalho de Conclusão de Curso ---------------------
- * ---------------------- Engenharia de Computação ------------------------
- * ------------- Universidade Tecnológica Federal do Paraná ---------------
- *
+ * @author Lucas e Jociane
  */
-
 @Entity
-@Table(name = "bookseries")
 public class BookSeries implements Serializable {
 
     @Id
-    @GeneratedValue
     private int bookSerie_id;
     private String bookSerieName;
     private int nVolumes;
@@ -45,7 +40,8 @@ public class BookSeries implements Serializable {
     public BookSeries() {
     }
 
-    public BookSeries(String serieName, int nVolumes, SerieTypeEnum serieType, String bookSynopsis) {
+    public BookSeries(int bookSerie_id, String serieName, int nVolumes, SerieTypeEnum serieType, String bookSynopsis) {
+        this.bookSerie_id = bookSerie_id;
         this.bookSerieName = serieName;
         this.nVolumes = nVolumes;
         this.serieType = serieType;

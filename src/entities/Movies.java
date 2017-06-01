@@ -11,22 +11,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * @author Jociane Franzoni de Lima
- * @author Lucas Penha de Moura
  *
- * ------------------- Trabalho de Conclusão de Curso ---------------------
- * ---------------------- Engenharia de Computação ------------------------
- * ------------- Universidade Tecnológica Federal do Paraná ---------------
- *
+ * @author lucas
  */
-
 @Entity
-@Table(name = "movies")
 public class Movies implements Serializable {
 
     @Id
@@ -40,52 +32,52 @@ public class Movies implements Serializable {
     private String movieSynopsis;
 
     /*One to Many*/
-	/*Relaciona Movie com Directors*/
-    @ManyToOne(cascade = {CascadeType.REFRESH})
+ /*Relaciona Movie com Directors*/
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "director_id")
     private Directors movieDirector;
 
     /*Relaciona movie com country*/
-    @ManyToOne(cascade = {CascadeType.REFRESH})
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "country_id")
     private Countries movieCountry;
 
     /*Relaciona movie com languages*/
-    @ManyToOne(cascade = {CascadeType.REFRESH})
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "language_id")
     private Languages movieLanguage;
 
     /*Many to Many*/
-	/*Relacioba movie com writer*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+ /*Relacioba movie com writer*/
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "Movie_Writer",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "writer_id"))
     private List<Writers> movieWriters;
 
     /*Relaciona Movie com Genres*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "Movie_Genre",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private List<Genres> movieGenres;
 
     /*Relaciona Movie com Actors*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "Movie_Actor",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id"))
     private List<Actors> movieActors;
 
     /*Relaciona Movie com Network*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "Movie_Network",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "network_id"))
     private List<Networks> movieNetworks;
 
     /*Relaciona Movie com Book*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "Movie_Book",
             joinColumns = @JoinColumn(name = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "book_id"))
@@ -105,18 +97,17 @@ public class Movies implements Serializable {
         this.movieReleaseDate = movieReleaseDate;
         this.movieLenght = movieLenght;
         this.movieSynopsis = movieSynopsis;
-        this.movieDirector = movieDirector;         //-> precisa de vetor
-        this.movieCountry = movieCountry;           //-> precisa de vetor
-        this.movieLanguage = movieLanguage;         //-> precisa de vetor
-        this.movieWriters = movieWriters;           //-> precisa de vetor
-        this.movieGenres = movieGenres;             //-> precisa de vetor
-        this.movieActors = movieActors;             //-> precisa de vetor
-        this.movieNetworks = movieNetworks;         //-> precisa de vetor
-        this.movieBooks = movieBooks;               //-> precisa de vetor
+        this.movieDirector = movieDirector; //-> precisa de vetor
+        this.movieCountry = movieCountry; //-> precisa de vetor
+        this.movieLanguage = movieLanguage; //-> precisa de vetor
+        this.movieWriters = movieWriters; //-> precisa de vetor
+        this.movieGenres = movieGenres; //-> precisa de vetor
+        this.movieActors = movieActors; //-> precisa de vetor
+        this.movieNetworks = movieNetworks; //-> precisa de vetor
+        this.movieBooks = movieBooks; //-> precisa de vetor
     }
 
     /*--------------------Constructors-------------------*/
-
     public int getMovie_id() {
         return movie_id;
     }
@@ -228,6 +219,5 @@ public class Movies implements Serializable {
     public void setMovieBooks(List<Books> movieBooks) {
         this.movieBooks = movieBooks;
     }
- 
 
 }

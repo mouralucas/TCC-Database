@@ -78,7 +78,7 @@ public class TestInsertBook10 extends AbstractJavaSamplerClient implements Seria
     public SampleResult runTest(JavaSamplerContext jsc) {
 
         SampleResult result = new SampleResult();
-        inserts = openTestFiles.open("insertBooks", testSize);
+        inserts = openTestFiles.open("insert\\insertBooks", testSize);
 
         result.sampleStart();
         Connection.getCon().getTransaction().begin();
@@ -142,7 +142,7 @@ public class TestInsertBook10 extends AbstractJavaSamplerClient implements Seria
     //This method is only for local test, is exactly the same as runTest
     public void testMethod() {
         SampleResult result = new SampleResult();
-        inserts = openTestFiles.open("insertBooks", testSize);
+        inserts = openTestFiles.open("insert\\insertBooks", testSize);
 
         result.sampleStart();
         Connection.getCon().getTransaction().begin();

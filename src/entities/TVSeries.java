@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entities;
 
 import java.io.Serializable;
@@ -11,22 +16,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * @author Jociane Franzoni de Lima
- * @author Lucas Penha de Moura
  *
- * ------------------- Trabalho de Conclusão de Curso ---------------------
- * ---------------------- Engenharia de Computação ------------------------
- * ------------- Universidade Tecnológica Federal do Paraná ---------------
- *
+ * @author Lucas
  */
-
 @Entity
-@Table(name = "tvseries")
 public class TVSeries implements Serializable {
 
     @Id
@@ -39,52 +36,52 @@ public class TVSeries implements Serializable {
     private String tvSerieSynopsis;
 
     /*Relaciona TVSerie com Genres*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "TVSerie_Genre",
             joinColumns = @JoinColumn(name = "tvSerie_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private List<Genres> tvSerieGenres;
 
     /*Relaciona TVSerie com Actors*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "TVSerie_Actor",
             joinColumns = @JoinColumn(name = "tvSerie_id"),
             inverseJoinColumns = @JoinColumn(name = "actor_id"))
     private List<Actors> tvSerieActors;
 
     /*Relaciona TVSerie com Directors*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "TVSerie_Director",
             joinColumns = @JoinColumn(name = "tvSerie_id"),
             inverseJoinColumns = @JoinColumn(name = "director_id"))
     private List<Directors> tvSerieDirectors;
 
     /*Relacioba TVSerie com writer*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "TVSerie_Writer",
             joinColumns = @JoinColumn(name = "tvSeries_id"),
             inverseJoinColumns = @JoinColumn(name = "writer_id"))
     private List<Writers> tvSerieWriters;
 
     /*Relaciona TVSerie com country*/
-    @ManyToOne(cascade = {CascadeType.REFRESH})
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "country_id")
     private Countries tvSerieCountry;
 
     /*Relaciona TVSerie com languages*/
-    @ManyToOne(cascade = {CascadeType.REFRESH})
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "language_id")
     private Languages tvSerieLanguage;
 
     /*Relaciona TVSerie com Network*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "TVSerie_Network",
             joinColumns = @JoinColumn(name = "tvSerie_id"),
             inverseJoinColumns = @JoinColumn(name = "network_id"))
     private List<Networks> tvSerieNetworks;
 
     /*Relaciona Movie com Book*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "TVSerie_Book",
             joinColumns = @JoinColumn(name = "tvSerie_id"),
             inverseJoinColumns = @JoinColumn(name = "book_id"))

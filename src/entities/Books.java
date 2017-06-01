@@ -11,22 +11,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * @author Jociane Franzoni de Lima
- * @author Lucas Penha de Moura
  *
- * ------------------- Trabalho de Conclusão de Curso ---------------------
- * ---------------------- Engenharia de Computação ------------------------
- * ------------- Universidade Tecnológica Federal do Paraná ---------------
- *
+ * @author Lucas e Jociane
  */
-
 @Entity
-@Table(name = "books")
 public class Books implements Serializable {
 
     @Id
@@ -44,33 +36,33 @@ public class Books implements Serializable {
     private String bookObservation;
 
     /*Relações entre livro e autor*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "Book_Author",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private List<Authors> bookAuthors;
 
     /*relação entre livro e serie*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "Book_BookSerie",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "bookSerie_id"))
     private List<BookSeries> bookSeries;
 
     /*reaciona livro com lingua*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "Book_Language",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "language_id"))
     private List<Languages> bookLanguages;
 
     /*relaciona livro com editora*/
-    @ManyToOne(cascade = {CascadeType.REFRESH})
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "publisher_id")
     private Publishers bookPublisher;
 
     /*Relaciona Book com Genres*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "Book_Genre",
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id"))

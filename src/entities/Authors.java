@@ -1,43 +1,38 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entities;
 
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 /**
- * @author Jociane Franzoni de Lima
- * @author Lucas Penha de Moura
  *
- * ------------------- Trabalho de Conclusão de Curso ---------------------
- * ---------------------- Engenharia de Computação ------------------------
- * ------------- Universidade Tecnológica Federal do Paraná ---------------
- *
+ * @author Lucas e Jociane
  */
-
 @Entity
-@Table(name = "authors")
 public class Authors implements Serializable {
 
     @Id
-    @GeneratedValue
     private int author_id;
     private String authorName;
     private String authorAbout;
 
     /*Relaciona autor com um lingua*/
-    @ManyToOne(cascade = {CascadeType.REFRESH})
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "language_id")
     private Languages authorLanguage;
 
     /*relaciona author com um pais*/
-    @ManyToOne(cascade = {CascadeType.REFRESH})
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "country_id")
     private Countries authorCountry;
 
@@ -55,7 +50,8 @@ public class Authors implements Serializable {
     public Authors() {
     }
 
-    public Authors(String authorName, Languages authorLanguage, Countries authorCountry, String authorAbout) {
+    public Authors(int author_id, String authorName, Languages authorLanguage, Countries authorCountry, String authorAbout) {
+        this.author_id = author_id;
         this.authorName = authorName;
         this.authorAbout = authorAbout;
         this.authorLanguage = authorLanguage;

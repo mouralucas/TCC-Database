@@ -1,37 +1,32 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entities;
 
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 /**
- * @author Jociane Franzoni de Lima
- * @author Lucas Penha de Moura
  *
- * ------------------- Trabalho de Conclusão de Curso ---------------------
- * ---------------------- Engenharia de Computação ------------------------
- * ------------- Universidade Tecnológica Federal do Paraná ---------------
- *
+ * @author Lucas
  */
-
 @Entity
-@Table(name = "writers")
 public class Writers implements Serializable {
 
     @Id
-    @GeneratedValue
     private int writer_id;
     private String writerName;
     private String writerAbout;
 
-    @ManyToOne(cascade = {CascadeType.REFRESH})
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "country_id")
     private Countries writerCountry;
 
@@ -45,7 +40,8 @@ public class Writers implements Serializable {
     public Writers() {
     }
 
-    public Writers(String writerName, Countries writerCountry, String writerAbout) {
+    public Writers(int writer_id, String writerName, Countries writerCountry, String writerAbout) {
+        this.writer_id = writer_id;
         this.writerName = writerName;
         this.writerAbout = writerAbout;
         this.writerCountry = writerCountry;

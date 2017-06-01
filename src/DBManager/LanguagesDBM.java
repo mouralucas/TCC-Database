@@ -25,7 +25,7 @@ public class LanguagesDBM {
     /*---------------------- Insertion Language Query ------------------------*/
     public boolean insertLanguages(Languages languages) {
         try {
-            Connection.getCon().merge(languages);
+            Connection.getCon().persist(languages);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

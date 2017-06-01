@@ -9,46 +9,38 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 /**
- * @author Jociane Franzoni de Lima
- * @author Lucas Penha de Moura
  *
- * ------------------- Trabalho de Conclusão de Curso ---------------------
- * ---------------------- Engenharia de Computação ------------------------
- * ------------- Universidade Tecnológica Federal do Paraná ---------------
- *
+ * @author Lucas e Jociane
  */
-
 @Entity
-@Table(name = "publishers")
 public class Publishers implements Serializable {
 
     @Id
-    @GeneratedValue
     private int publisher_id;
     private String publisherName;
     private String publisherAbout;
 
-    @ManyToOne(cascade = {CascadeType.REFRESH})
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "country_id")
     private Countries publisherCountry;
 
-    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "bookPublisher")
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "bookPublisher")
     private List<Books> books;
 
-    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "mangaPublisher")
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "mangaPublisher")
     private List<Mangas> mangas;
 
-    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "hqPublisher")
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "hqPublisher")
     private List<HQS> hqs;
 
     /*--------------------Constructors-------------------*/
     public Publishers() {
     }
 
-    public Publishers(String publisherName, Countries publisherCountry, String publisherAbout) {
+    public Publishers(int publisher_id, String publisherName, Countries publisherCountry, String publisherAbout) {
+        this.publisher_id = publisher_id;
         this.publisherName = publisherName;
         this.publisherAbout = publisherAbout;
         this.publisherCountry = publisherCountry;

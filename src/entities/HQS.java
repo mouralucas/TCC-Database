@@ -11,20 +11,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
- * @author Jociane Franzoni de Lima
- * @author Lucas Penha de Moura
  *
- * ------------------- Trabalho de Conclusão de Curso ---------------------
- * ---------------------- Engenharia de Computação ------------------------
- * ------------- Universidade Tecnológica Federal do Paraná ---------------
- *
+ * @author Lucas e Jociane
  */
-
 @Entity
-@Table(name = "hqs")
 public class HQS implements Serializable {
 
     @Id
@@ -34,39 +28,40 @@ public class HQS implements Serializable {
     private String hqTitle;
     private int hqVolume;
     private int hqPages;
+    @Temporal(TemporalType.DATE)
     private Date hqPublishingDate;
     private double hqCoverPrice;
     private String hqSynopsis;
     private String hqObservation;
 
-    /*Relação entre livro e autor*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+    /*Relaçãoe entre livro e autor*/
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "HQ_Author",
             joinColumns = @JoinColumn(name = "hq_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private List<Authors> hqAuthors;
 
     /*relação entre livro e serie*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "HQ_BookSerie",
             joinColumns = @JoinColumn(name = "hq_id"),
             inverseJoinColumns = @JoinColumn(name = "bookSerie_id"))
     private List<BookSeries> hqSeries;
 
     /*reaciona livro com lingua*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "HQ_Language",
             joinColumns = @JoinColumn(name = "hq_id"),
             inverseJoinColumns = @JoinColumn(name = "language_id"))
     private List<Languages> hqLanguages;
 
     /*relaciona livro com editora*/
-    @ManyToOne(cascade = {CascadeType.REFRESH})
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "publisher_id")
     private Publishers hqPublisher;
 
     /*relaciona livro com generos*/
-    @ManyToMany(cascade = {CascadeType.REFRESH})
+    @ManyToMany(cascade = CascadeType.REFRESH)
     @JoinTable(name = "HQ_Genre",
             joinColumns = @JoinColumn(name = "hq_id"),
             inverseJoinColumns = @JoinColumn(name = "genre_id)"))

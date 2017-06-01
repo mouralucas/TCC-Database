@@ -2,30 +2,18 @@ package entities;
 
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 
 /**
- * @author Jociane Franzoni de Lima
- * @author Lucas Penha de Moura
  *
- * ------------------- Trabalho de Conclusão de Curso ---------------------
- * ---------------------- Engenharia de Computação ------------------------
- * ------------- Universidade Tecnológica Federal do Paraná ---------------
- *
+ * @author Lucas e Jociane
  */
-
 @Entity
-@Table(name = "genres")
 public class Genres implements Serializable {
 
     @Id
-    @GeneratedValue
-    @Column(name = "genre_id", nullable = false)
     private int genre_id;
     private String genreName;
 
@@ -69,7 +57,8 @@ public class Genres implements Serializable {
     public Genres() {
     }
 
-    public Genres(String genreName) {
+    public Genres(int genre_id, String genreName) {
+        this.genre_id = genre_id;
         this.genreName = genreName;
     }
 

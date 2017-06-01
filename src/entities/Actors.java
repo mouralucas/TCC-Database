@@ -1,39 +1,32 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package entities;
 
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
 
 /**
- * @author Jociane Franzoni de Lima
- * @author Lucas Penha de Moura
  *
- * ------------------- Trabalho de Conclusão de Curso ---------------------
- * ---------------------- Engenharia de Computação ------------------------
- * ------------- Universidade Tecnológica Federal do Paraná ---------------
- *
+ * @author Lucas
  */
-
 @Entity
-@Table(name = "actors")
 public class Actors implements Serializable {
 
     @Id
-    @GeneratedValue
-    @Column(name = "actor_id")
     private int actor_id;
     private String actorName;
     private String actorAbout;
 
-    @ManyToOne(cascade = {CascadeType.REFRESH})
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "country_id")
     private Countries actorCountry;
 
@@ -47,7 +40,8 @@ public class Actors implements Serializable {
     public Actors() {
     }
 
-    public Actors(String actorName, Countries actorCountry, String actorAbout) {
+    public Actors(int actor_id, String actorName, Countries actorCountry, String actorAbout) {
+        this.actor_id = actor_id;
         this.actorName = actorName;
         this.actorAbout = actorAbout;
         this.actorCountry = actorCountry;

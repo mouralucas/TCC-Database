@@ -3,45 +3,33 @@ package entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 /**
- * @author Jociane Franzoni de Lima
- * @author Lucas Penha de Moura
  *
- * ------------------- Trabalho de Conclusão de Curso ---------------------
- * ---------------------- Engenharia de Computação ------------------------
- * ------------- Universidade Tecnológica Federal do Paraná ---------------
- *
+ * @author Lucas e Jociane
  */
-
 @Entity
-@Table(name = "languages")
 public class Languages implements Serializable {
 
     @Id
-    @GeneratedValue
-    @Column(name = "language_id", nullable = false)
     private int language_id;
     private String languageName;
     private int priority;
 
     /*relaciona movie com language*/
-    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "movieLanguage")
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "movieLanguage")
     private List<Movies> movies;
 
     /*relaciona TVSeries com language*/
-    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "tvSerieLanguage")
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "tvSerieLanguage")
     private List<TVSeries> tvSeries;
 
     /*relaciona autor com lingua de escrita*/
-    @OneToMany(cascade = {CascadeType.REFRESH}, mappedBy = "authorLanguage")
+    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "authorLanguage")
     private List<Authors> authors;
 
     /*relaciona livro com os idiamas contidos nele*/
@@ -58,7 +46,8 @@ public class Languages implements Serializable {
     public Languages() {
     }
 
-    public Languages(String languageName, int priority) {
+    public Languages(int id, String languageName, int priority) {
+        this.language_id = id;
         this.languageName = languageName;
         this.priority = priority;
     }

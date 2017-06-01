@@ -84,7 +84,7 @@ public class TestInsertMovie10 extends AbstractJavaSamplerClient implements Seri
     @Override
     public SampleResult runTest(JavaSamplerContext jsc) {
         SampleResult result = new SampleResult();
-        inserts = openTestFiles.open("insertMovies", testSize);
+        inserts = openTestFiles.open("insert\\insertMovies", testSize);
 
         result.sampleStart();
         Connection.getCon().getTransaction().begin();
@@ -160,7 +160,7 @@ public class TestInsertMovie10 extends AbstractJavaSamplerClient implements Seri
     //This method is only for local test, is exactly the same as runTest
     public void testMethod() {
         SampleResult result = new SampleResult();
-        inserts = openTestFiles.open("insertMovies", testSize);
+        inserts = openTestFiles.open("insert\\insertMovies", testSize);
 
         result.sampleStart();
         Connection.getCon().getTransaction().begin();
