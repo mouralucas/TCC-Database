@@ -1,6 +1,7 @@
 package newLibrary_v7;
 
 import Conn.Connection;
+import t_remove.TestRemoveBook10;
 
 /**
  * @author Jociane Franzoni de Lima
@@ -16,9 +17,14 @@ public class InitSystem {
     public static void main(String args[]) {
         Connection.setCon();
         
-        //Execute this to fill booth MySQL and MongoDB
-//        InsertData insertData = new InsertData();
-//        insertData.insertAllData();
+//      InsertData insertDta = new InsertData();
+//      insertDta.insertData();
+        TestRemoveBook10 book10 = new TestRemoveBook10();
+        book10.testMethod();
+        
+//        TestInsertBook10 book10 = new TestInsertBook10();
+//        book10.testMethod();
+
 
         
 

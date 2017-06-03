@@ -35,7 +35,8 @@ public class BooksDBM {
     public List retrieveBookByTitle(String bookTitle) {
         return Connection.getCon().createQuery("SELECT b FROM Books b "
                 + "WHERE b.bookTitle LIKE CONCAT('%',:bookTitle,'%')")
-                .setParameter("bookTitle", bookTitle).getResultList();
+                .setParameter("bookTitle", bookTitle)
+                .getResultList();
     }
 
     //Query that'll be used in the test
