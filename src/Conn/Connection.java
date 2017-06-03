@@ -21,7 +21,7 @@ public class Connection {
 
     public static boolean setCon() {
         if (factory == null || em == null) {
-            factory = Persistence.createEntityManagerFactory("mongo_PU");
+            factory = Persistence.createEntityManagerFactory("mysql_PU");
             em = factory.createEntityManager();
             return true;
         }
