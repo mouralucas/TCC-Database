@@ -1,8 +1,9 @@
 package t_remove;
 
 import Conn.Connection;
-import DBManager.BooksDBM;
+import DBManager.MoviesDBM;
 import entities.Books;
+import entities.Movies;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,16 +22,17 @@ import t_files.OpenTestFiles;
  * ------------- Universidade Tecnológica Federal do Paraná ---------------
  *
  */
-public class TestRemoveBook10 extends AbstractJavaSamplerClient implements Serializable {
+public class TestRemoveMovie10 extends AbstractJavaSamplerClient implements Serializable {
 
     private boolean conn = Connection.setCon();
     OpenTestFiles openTestFiles = new OpenTestFiles();
-    private BooksDBM booksDBM = new BooksDBM();
+    private MoviesDBM moviesDBM = new MoviesDBM();
     private final String testSize = "10";
-    Books booksAux;
-    List<Object> objectReferenceBooks = new ArrayList<>();
-    List<Books> books = new ArrayList<>();
-    List<Books> booksListAux = new ArrayList<>();
+    
+    Movies moviesAux;
+    List<Object> objectReferenceMovies = new ArrayList<>();
+    List<Movies> movies = new ArrayList<>();
+    List<Movies> moviesListAux = new ArrayList<>();
     List<String[]> removeList = new ArrayList<>();
     
 
@@ -44,13 +46,13 @@ public class TestRemoveBook10 extends AbstractJavaSamplerClient implements Seria
     //This method is only for local test, is exactly the same as runTest
     public void testMethod() {
         SampleResult result = new SampleResult();
-        removeList = openTestFiles.open("remove\\removeBooks", testSize);
+        removeList = openTestFiles.open("remove\\removeMovies", testSize);
         
         for(String[] remove: removeList){
             String aux = remove[0];
-            booksListAux = booksDBM.retrieveBookByTitle(aux);
-            if(booksListAux != null) {
-                books.add(booksListAux.get(0));
+            moviesListAux = moviesDBM.retrieveMovieByTitle(aux);
+            if(moviesListAux != null) {
+                movies.add(moviesListAux.get(0));
             }
         }
         
@@ -58,8 +60,8 @@ public class TestRemoveBook10 extends AbstractJavaSamplerClient implements Seria
         
         Connection.getCon().getTransaction().begin();
        
-        for(Books b : books) {
-            booksDBM.removeBook(b);
+        for(Movies m : movies) {
+            moviesDBM.removeBook(m);
         }
         
         Connection.getCon().getTransaction().commit();
