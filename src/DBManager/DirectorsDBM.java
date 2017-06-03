@@ -7,14 +7,18 @@ package DBManager;
 
 import Conn.Connection;
 import entities.Directors;
-import entities.Genres;
 import java.util.List;
-import javax.persistence.EntityManager;
 
 /**
+ * @author Jociane Franzoni de Lima
+ * @author Lucas Penha de Moura
  *
- * @author Lucas
+ * ------------------- Trabalho de Conclusão de Curso ---------------------
+ * ---------------------- Engenharia de Computação ------------------------
+ * ------------- Universidade Tecnológica Federal do Paraná ---------------
+ *
  */
+
 public class DirectorsDBM {
 
     /*---------------------- Insertion Director Query ------------------------*/

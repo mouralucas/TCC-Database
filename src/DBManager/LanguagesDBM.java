@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DBManager;
 
 import Conn.Connection;
-import entities.Authors;
 import entities.Languages;
 import java.util.List;
-import javax.persistence.EntityManager;
 
 /**
  * @author Jociane Franzoni de Lima
@@ -20,6 +13,7 @@ import javax.persistence.EntityManager;
  * ------------- Universidade Tecnológica Federal do Paraná ---------------
  *
  */
+
 public class LanguagesDBM {
 
     /*---------------------- Insertion Language Query ------------------------*/

@@ -10,9 +10,15 @@ import entities.Authors;
 import java.util.List;
 
 /**
+ * @author Jociane Franzoni de Lima
+ * @author Lucas Penha de Moura
  *
- * @author Lucas
+ * ------------------- Trabalho de Conclusão de Curso ---------------------
+ * ---------------------- Engenharia de Computação ------------------------
+ * ------------- Universidade Tecnológica Federal do Paraná ---------------
+ *
  */
+
 public class AuthorsDBM {
 
     /*---------------------- Insertion Author Query ------------------------*/

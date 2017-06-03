@@ -1,19 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DBManager;
 
 import Conn.Connection;
 import entities.BookSeries;
 import java.util.List;
-import javax.persistence.EntityManager;
 
 /**
+ * @author Jociane Franzoni de Lima
+ * @author Lucas Penha de Moura
  *
- * @author Lucas
+ * ------------------- Trabalho de Conclusão de Curso ---------------------
+ * ---------------------- Engenharia de Computação ------------------------
+ * ------------- Universidade Tecnológica Federal do Paraná ---------------
+ *
  */
+
 public class BookSeriesDBM {
 
     /*---------------------- Insertion BookSerie Query ------------------------*/

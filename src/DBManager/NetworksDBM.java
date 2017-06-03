@@ -2,14 +2,18 @@ package DBManager;
 
 import Conn.Connection;
 import entities.Networks;
-import entities.Writers;
 import java.util.List;
-import javax.persistence.EntityManager;
 
 /**
+ * @author Jociane Franzoni de Lima
+ * @author Lucas Penha de Moura
  *
- * @author Lucas
+ * ------------------- Trabalho de Conclusão de Curso ---------------------
+ * ---------------------- Engenharia de Computação ------------------------
+ * ------------- Universidade Tecnológica Federal do Paraná ---------------
+ *
  */
+
 public class NetworksDBM {
 
     /*---------------------- Insertion Network Query ------------------------*/

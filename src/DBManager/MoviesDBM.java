@@ -1,10 +1,8 @@
 package DBManager;
 
 import Conn.Connection;
-import entities.Books;
 import entities.Movies;
 import java.util.List;
-import javax.persistence.EntityManager;
 
 /**
  * @author Jociane Franzoni de Lima
@@ -15,6 +13,7 @@ import javax.persistence.EntityManager;
  * ------------- Universidade Tecnológica Federal do Paraná ---------------
  *
  */
+
 public class MoviesDBM {
 
     /*----------------------- Insertion Movie Query -------------------------*/
