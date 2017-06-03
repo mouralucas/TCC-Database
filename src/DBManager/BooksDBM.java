@@ -61,17 +61,33 @@ public class BooksDBM {
                 .setParameter("bookPublisher", publisher)
                 .getResultList();
     }
-    
-     //Query that'll be used in the test
+//    (select ba.book_id from book_author ba inner join authors a on ba.author_id = a.author_id where a.author_id =
+//    (select a.author_id
+//    FROM authors a INNER JOIN languages l ON l.language_id = a.language_id where l.languageName like "%auctor"));
+
     public List retrieveBookByAuthorByLanguage(String languageName) {
-        Query queryAuthorLanguage = Connection.getCon().createQuery("SELECT "
+//        Query queryAuthorLanguage = Connection.getCon().createQuery("SELECT ";
+//                + "a.author_id "
+//                + "FROM Authors a "
+//                + "INNER JOIN a.authorLanguage l "
+//                + "WHERE "
+//                + "l.languageName LIKE CONCAT('%',:languageName,'%')"
+//        ).setParameter("languageName", languageName);
+
+//Verificar porque a pesquisa não retornou corretamente
+        Query queryBook_Author = Connection.getCon().createQuery("SELECT "
+                + "b "
+                + "FROM Books b "
+                + "JOIN Authors a"
+                + " WHERE a.author_id = "
+                + "(SELECT "
                 + "a.author_id "
                 + "FROM Authors a "
-                + "INNER JOIN Languages l "
+                + "INNER JOIN a.authorLanguage l "
                 + "WHERE "
-                + "l.languageName LIKE CONCAT('%',:languageName,'%')"
+                + "l.languageName LIKE CONCAT('%',:languageName,'%'))"
         ).setParameter("languageName", languageName);
-        return queryAuthorLanguage.getResultList();
+        return queryBook_Author.getResultList();
     }
 
     /*------------------------- Remove Book Query --------------------------*/
