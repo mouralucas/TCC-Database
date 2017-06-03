@@ -1,7 +1,7 @@
 package newLibrary_v7;
 
 import Conn.Connection;
-import t_remove.TestRemoveBook10;
+import preInsertions.InsertData;
 
 /**
  * @author Jociane Franzoni de Lima
@@ -16,20 +16,18 @@ public class InitSystem {
 
     public static void main(String args[]) {
         Connection.setCon();
-        
-//      InsertData insertDta = new InsertData();
-//      insertDta.insertData();
-        TestRemoveBook10 book10 = new TestRemoveBook10();
-        book10.testMethod();
-        
+
+        InsertData insertDta = new InsertData();
+        insertDta.insertData();
+//        TestRemoveBook10 book10 = new TestRemoveBook10();
+//        book10.testMethod();
+
 //        TestInsertBook10 book10 = new TestInsertBook10();
 //        book10.testMethod();
 
+//        TesteUpdateBook10 testUpdateBook = new TesteUpdateBook10();
+//        testUpdateBook.testMethod();
 
-        
-
-        
         System.out.println("Connection Done");
-        Connection.closeCon();
     }
 }

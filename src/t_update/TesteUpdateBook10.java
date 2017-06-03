@@ -6,11 +6,13 @@
 package t_update;
 
 import Conn.Connection;
+import DBManager.BooksDBM;
 import entities.Books;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient;
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
 import org.apache.jmeter.samplers.SampleResult;
@@ -24,12 +26,17 @@ public class TesteUpdateBook10 extends AbstractJavaSamplerClient implements Seri
 
     private boolean conn = Connection.setCon();
     OpenTestFiles openTestFiles = new OpenTestFiles();
+    BooksDBM booksDBM = new BooksDBM();
+    Random r = new Random();
+
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-    
+
     private final String testSize = "10";
-    
+
     Books books;
-    
+    List<Books> allBooks;
+    List<Books> booksToBeUpdated = new ArrayList<>();
+
     List<String[]> updates = new ArrayList<>();
 
     @Override
@@ -43,15 +50,27 @@ public class TesteUpdateBook10 extends AbstractJavaSamplerClient implements Seri
     public void testMethod() {
         SampleResult result = new SampleResult();
         updates = openTestFiles.open("update\\updateBooks", testSize);
+        allBooks = booksDBM.retrieveAllBooks();
+
+        for (int i = 0; i < Integer.parseInt(testSize); i++) {
+            booksToBeUpdated.add(allBooks.get(rand(0, allBooks.size()-1)));
+        }
         
-        //precisa fazer a pesquisa do arquivo que será atualizado e setar os novos valores
         
-        
+
+        result.sampleStart();
+        updates.forEach((iterator) -> {
+            System.out.println("pos iterator: " + iterator.hashCode());
+        });
         result.sampleEnd();
 
         System.out.println("\n\nTempo de execução do teste: " + result.getTime());
         result.setSuccessful(true);
 
         Connection.closeCon();
+    }
+
+    public int rand(int minimo, int maximo) {
+        return r.nextInt((maximo - minimo) + 1) + minimo;
     }
 }
