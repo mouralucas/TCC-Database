@@ -82,14 +82,15 @@ public class TestRemoveBook10 extends AbstractJavaSamplerClient implements Seria
         }
         
         result.sampleStart();
+        
         Connection.getCon().getTransaction().begin();
-        Iterator itr = books.iterator();
-        while (itr.hasNext()) {
-              Books objBook = (Books) itr.next();
-              booksDBM.removeBook(objBook);
-        }
        
+        for(Books b : books) {
+            booksDBM.removeBook(b);
+        }
+        
         Connection.getCon().getTransaction().commit();
+        
         result.sampleEnd();
 
         System.out.println("\n\nTempo de execução do teste: " + result.getTime());
