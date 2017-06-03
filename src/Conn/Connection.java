@@ -36,5 +36,6 @@ public class Connection {
     public static void closeCon(){
         em.close();
         factory.close();
+        System.out.println("Connection Done");
     }
 }

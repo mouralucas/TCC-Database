@@ -3,6 +3,7 @@ package DBManager;
 import Conn.Connection;
 import entities.Books;
 import java.util.List;
+import javax.persistence.Query;
 
 /**
  * @author Jociane Franzoni de Lima
@@ -59,6 +60,18 @@ public class BooksDBM {
                 .setParameter("bookSerieName", serie)
                 .setParameter("bookPublisher", publisher)
                 .getResultList();
+    }
+    
+     //Query that'll be used in the test
+    public List retrieveBookByAuthorByLanguage(String languageName) {
+        Query queryAuthorLanguage = Connection.getCon().createQuery("SELECT "
+                + "a.author_id "
+                + "FROM Authors a "
+                + "INNER JOIN Languages l "
+                + "WHERE "
+                + "l.languageName LIKE CONCAT('%',:languageName,'%')"
+        ).setParameter("languageName", languageName);
+        return queryAuthorLanguage.getResultList();
     }
 
     /*------------------------- Remove Book Query --------------------------*/
