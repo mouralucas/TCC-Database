@@ -37,7 +37,6 @@ public class TestRetrieveBookByAuthorByLanguage10 extends AbstractJavaSamplerCli
     @Override
     public SampleResult runTest(JavaSamplerContext jsc) {
         SampleResult result = new SampleResult();
-
         return result;
     }
 

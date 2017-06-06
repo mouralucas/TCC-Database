@@ -32,7 +32,6 @@ public class TestRemoveBook10 extends AbstractJavaSamplerClient implements Seria
     List<Books> books = new ArrayList<>();
     List<Books> booksListAux = new ArrayList<>();
     List<String[]> removeList = new ArrayList<>();
-    
 
     @Override
     public SampleResult runTest(JavaSamplerContext jsc) {
@@ -45,26 +44,26 @@ public class TestRemoveBook10 extends AbstractJavaSamplerClient implements Seria
     public void testMethod() {
         SampleResult result = new SampleResult();
         removeList = openTestFiles.open("remove\\removeBooks", testSize);
-        
-        for(String[] remove: removeList){
+
+        for (String[] remove : removeList) {
             String aux = remove[0];
             booksListAux = booksDBM.retrieveBookByTitle(aux);
-            if(booksListAux != null) {
+            if (booksListAux != null) {
                 books.add(booksListAux.get(0));
             }
         }
-        
+
         result.sampleStart();
-        
+
         Connection.getCon().getTransaction().begin();
-       
-        for(Books b : books) {
+
+        for (Books b : books) {
             booksDBM.removeBook(b);
         }
-        
+
         Connection.getCon().getTransaction().commit();
-        Connection.closeCon();
         result.sampleEnd();
+        Connection.closeCon();
 
         System.out.println("\n\nTempo de execução do teste: " + result.getTime());
         result.setSuccessful(true);

@@ -7,7 +7,6 @@ package t_retrieve;
 
 import Conn.Connection;
 import DBManager.BooksDBM;
-import entities.Books;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +32,6 @@ public class TestRetrieveBook10 extends AbstractJavaSamplerClient implements Ser
     @Override
     public SampleResult runTest(JavaSamplerContext jsc) {
         SampleResult result = new SampleResult();
-
         return result;
     }
 
@@ -54,8 +52,9 @@ public class TestRetrieveBook10 extends AbstractJavaSamplerClient implements Ser
             book = booksDBM.retrieveBookByMultipleValues(iterator[0], iterator[1], iterator[2], iterator[3], iterator[4]);
             retrievedBooks.add(book);
         });
-        Connection.getCon().getTransaction().commit();
+//        Connection.getCon().getTransaction().commit();
         result.sampleEnd();
+        Connection.closeCon();
         System.out.println("\n\nTempo de execução do teste: " + result.getTime());
         result.setSuccessful(true);
     }

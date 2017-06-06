@@ -34,7 +34,6 @@ public class TestRetrieveMovie10 extends AbstractJavaSamplerClient implements Se
     @Override
     public SampleResult runTest(JavaSamplerContext jsc) {
         SampleResult result = new SampleResult();
-
         return result;
     }
 
@@ -56,12 +55,11 @@ public class TestRetrieveMovie10 extends AbstractJavaSamplerClient implements Se
             movie = moviesDBM.retrieveMovieByMultipleValues(iterator[0], iterator[1], iterator[2], iterator[3], iterator[4], iterator[5]);
             retrievedMovies.add(movie);
         });
-        Connection.getCon().getTransaction().commit();
+//        Connection.getCon().getTransaction().commit();
         result.sampleEnd();
+        Connection.closeCon();
         System.out.println("\n\nTempo de execução do teste: " + result.getTime());
-        result.setSuccessful(true);
-        
-        
+        result.setSuccessful(true); 
     }
 
 }

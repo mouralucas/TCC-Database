@@ -44,7 +44,7 @@ public class TestInsertBook10 extends AbstractJavaSamplerClient implements Seria
     OpenTestFiles openTestFiles = new OpenTestFiles();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-    private final String testSize = "1000";
+    private final String testSize = "100";
     
     Books books;
 
@@ -104,19 +104,19 @@ public class TestInsertBook10 extends AbstractJavaSamplerClient implements Seria
                 }
             });
 
-//            //find publisher
-//            listPublisers.forEach((i) -> {
-//                if (iterator[12].equals(i.getPublisherName())) {
-//                    publisher = i;
-//                }
-//            });
+            //find publisher
+            listPublisers.forEach((i) -> {
+                if (iterator[12].equals(i.getPublisherName())) {
+                    publisher = i;
+                }
+            });
 
-//            //find genres
-//            listGenrres.forEach((i) -> {
-//                if (iterator[13].equals(i.getGenreName())) {
-//                    genres.add(i);
-//                }
-//            });
+            //find genres
+            listGenrres.forEach((i) -> {
+                if (iterator[13].equals(i.getGenreName())) {
+                    genres.add(i);
+                }
+            });
 
             try {
                 books = new Books(iterator[0], iterator[1], iterator[2], Integer.parseInt(iterator[3]),
@@ -131,8 +131,8 @@ public class TestInsertBook10 extends AbstractJavaSamplerClient implements Seria
             bkdbm.insertBook(books);
         });
         Connection.getCon().getTransaction().commit();
-        Connection.closeCon();
         result.sampleEnd();
+        Connection.closeCon();
 
         System.out.println("\n\nTempo de execução do teste: " + result.getTime());
         result.setSuccessful(true);
@@ -142,7 +142,7 @@ public class TestInsertBook10 extends AbstractJavaSamplerClient implements Seria
 
     //This method is only for local test, is exactly the same as runTest
     public void testMethod() {
-        SampleResult result = new SampleResult();
+       SampleResult result = new SampleResult();
         inserts = openTestFiles.open("insert\\insertBooks", testSize);
 
         result.sampleStart();
@@ -197,6 +197,7 @@ public class TestInsertBook10 extends AbstractJavaSamplerClient implements Seria
         });
         Connection.getCon().getTransaction().commit();
         result.sampleEnd();
+        Connection.closeCon();
 
         System.out.println("\n\nTempo de execução do teste: " + result.getTime());
         result.setSuccessful(true);
