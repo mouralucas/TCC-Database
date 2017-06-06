@@ -5,6 +5,8 @@
  */
 package preInsertions;
 
+import Conn.Connection;
+
 /**
  *
  * @author Lucas
@@ -12,15 +14,16 @@ package preInsertions;
 public class InsertData {
 
     public void insertData() {
+        Connection.setCon();
         InsertGenres insertGenres = new InsertGenres();
         insertGenres.insert();
-        
+
         InsertLanguages insertLanguages = new InsertLanguages();
         insertLanguages.insert();
-        
+
         InsertCountries insertCountries = new InsertCountries();
         insertCountries.insert();
-        
+
         InsertActors insertActors = new InsertActors();
         InsertActors2 insertActors2 = new InsertActors2();
         InsertActors3 insertActors3 = new InsertActors3();
@@ -53,7 +56,7 @@ public class InsertData {
         insertActors14.insert();
         insertActors15.insert();
         insertActors16.insert();
-        
+
         InsertAuthors insertAuthors = new InsertAuthors();
         InsertAuthors2 insertAuthors2 = new InsertAuthors2();
         InsertAuthors3 insertAuthors3 = new InsertAuthors3();
@@ -74,12 +77,12 @@ public class InsertData {
         insertAuthors8.insert();
         insertAuthors9.insert();
         insertAuthors10.insert();
-        
+
         InsertBookSeries insertBookSeries = new InsertBookSeries();
         InsertBookSeries2 insertBookSeries2 = new InsertBookSeries2();
         insertBookSeries.insert();
         insertBookSeries2.insert();
-        
+
         InsertDirectors insertDirectors = new InsertDirectors();
         InsertDirectors2 insertDirectors2 = new InsertDirectors2();
         InsertDirectors3 insertDirectors3 = new InsertDirectors3();
@@ -90,13 +93,13 @@ public class InsertData {
         insertDirectors3.insert();
         insertDirectors4.insert();
         insertDirectors5.insert();
-        
+
         InsertNetworks insertNetworks = new InsertNetworks();
         insertNetworks.insert();
-        
+
         InsertPublishers insertPublishers = new InsertPublishers();
         insertPublishers.insert();
-        
+
         InsertWriters insertWriters = new InsertWriters();
         InsertWriters2 insertWriters2 = new InsertWriters2();
         InsertWriters3 insertWriters3 = new InsertWriters3();
@@ -117,6 +120,6 @@ public class InsertData {
         insertWriters8.insert();
         insertWriters9.insert();
         insertWriters10.insert();
-
+        Connection.closeCon();
     }
 }

@@ -1,6 +1,5 @@
 package newLibrary_v7;
 
-import Conn.Connection;
 import t_Inserts.TestInsertMovie10;
 
 /**
@@ -15,7 +14,7 @@ import t_Inserts.TestInsertMovie10;
 public class InitSystem {
 
     public static void main(String args[]) {
-        Connection.setCon();
+//        Connection.setCon();
 
 //        InsertData insertDta = new InsertData();
 //        insertDta.insertData();
@@ -47,6 +46,6 @@ public class InitSystem {
 //        testUpdateBook.testMethod();
 //        TestRemoveMovie10 rmMovie = new TestRemoveMovie10();
 //        rmMovie.testMethod();
-        //Connection.closeCon();
+//        Connection.closeCon();
     }
 }

@@ -44,7 +44,7 @@ public class TestInsertBook10 extends AbstractJavaSamplerClient implements Seria
     OpenTestFiles openTestFiles = new OpenTestFiles();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-    private final String testSize = "100";
+    private final String testSize = "10";
     
     Books books;
 
