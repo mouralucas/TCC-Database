@@ -26,7 +26,7 @@ public class TestRemoveBook10 extends AbstractJavaSamplerClient implements Seria
     private boolean conn = Connection.setCon();
     OpenTestFiles openTestFiles = new OpenTestFiles();
     private BooksDBM booksDBM = new BooksDBM();
-    private final String testSize = "10";
+    private final String testSize = "100";
     Books booksAux;
     List<Object> objectReferenceBooks = new ArrayList<>();
     List<Books> books = new ArrayList<>();
@@ -63,7 +63,7 @@ public class TestRemoveBook10 extends AbstractJavaSamplerClient implements Seria
         }
         
         Connection.getCon().getTransaction().commit();
-        
+        Connection.closeCon();
         result.sampleEnd();
 
         System.out.println("\n\nTempo de execução do teste: " + result.getTime());

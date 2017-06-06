@@ -44,7 +44,7 @@ public class TestInsertBook10 extends AbstractJavaSamplerClient implements Seria
     OpenTestFiles openTestFiles = new OpenTestFiles();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-    private final String testSize = "10";
+    private final String testSize = "1000";
     
     Books books;
 
@@ -104,19 +104,19 @@ public class TestInsertBook10 extends AbstractJavaSamplerClient implements Seria
                 }
             });
 
-            //find publisher
-            listPublisers.forEach((i) -> {
-                if (iterator[12].equals(i.getPublisherName())) {
-                    publisher = i;
-                }
-            });
+//            //find publisher
+//            listPublisers.forEach((i) -> {
+//                if (iterator[12].equals(i.getPublisherName())) {
+//                    publisher = i;
+//                }
+//            });
 
-            //find genres
-            listGenrres.forEach((i) -> {
-                if (iterator[13].equals(i.getGenreName())) {
-                    genres.add(i);
-                }
-            });
+//            //find genres
+//            listGenrres.forEach((i) -> {
+//                if (iterator[13].equals(i.getGenreName())) {
+//                    genres.add(i);
+//                }
+//            });
 
             try {
                 books = new Books(iterator[0], iterator[1], iterator[2], Integer.parseInt(iterator[3]),
@@ -131,6 +131,7 @@ public class TestInsertBook10 extends AbstractJavaSamplerClient implements Seria
             bkdbm.insertBook(books);
         });
         Connection.getCon().getTransaction().commit();
+        Connection.closeCon();
         result.sampleEnd();
 
         System.out.println("\n\nTempo de execução do teste: " + result.getTime());

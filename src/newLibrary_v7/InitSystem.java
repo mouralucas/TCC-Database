@@ -1,9 +1,7 @@
 package newLibrary_v7;
 
 import Conn.Connection;
-import entities.Languages;
-import java.util.List;
-import t_retrieve.TestRetrieveBookByAuthorByLanguage10;
+import t_Inserts.TestInsertBook10;
 
 /**
  * @author Jociane Franzoni de Lima
@@ -31,14 +29,14 @@ public class InitSystem {
 //            TestRemoveMovie10 movie10 = new TestRemoveMovie10();
 //            movie10.testMethod();
           
-//          TestInsertBook10 book10 = new TestInsertBook10();
-//          book10.testMethod();
+          TestInsertBook10 book10 = new TestInsertBook10();
+          book10.testMethod();
           
 //          TestRetrieveBook10 book10 = new TestRetrieveBook10();
 //          book10.testMethod();
 
-            TestRetrieveBookByAuthorByLanguage10 language10 = new TestRetrieveBookByAuthorByLanguage10();
-            language10.testMethod();
+//            TestRetrieveBookByAuthorByLanguage10 language10 = new TestRetrieveBookByAuthorByLanguage10();
+//            language10.testMethod();
             
            
           
