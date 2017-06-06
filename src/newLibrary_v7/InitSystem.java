@@ -1,7 +1,7 @@
 package newLibrary_v7;
 
 import Conn.Connection;
-import t_remove.TestRemoveBook10;
+import t_Inserts.TestInsertMovie10;
 
 /**
  * @author Jociane Franzoni de Lima
@@ -20,11 +20,11 @@ public class InitSystem {
 //        InsertData insertDta = new InsertData();
 //        insertDta.insertData();
 
-            TestRemoveBook10 book10 = new TestRemoveBook10();
-            book10.testMethod();
+//            TestRemoveBook10 book10 = new TestRemoveBook10();
+//            book10.testMethod();
             
-//            TestInsertMovie10 movie10 = new TestInsertMovie10();
-//            movie10.testMethod();
+            TestInsertMovie10 movie10 = new TestInsertMovie10();
+            movie10.testMethod();
             
 //            TestRemoveMovie10 movie10 = new TestRemoveMovie10();
 //            movie10.testMethod();

@@ -161,6 +161,5 @@ public class TestInsertMovie10 extends AbstractJavaSamplerClient implements Seri
 
         System.out.println("\n\nTempo de execução do teste: " + result.getTime());
         result.setSuccessful(true);
-
     }
 }
