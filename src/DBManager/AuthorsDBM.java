@@ -22,9 +22,9 @@ import java.util.List;
 public class AuthorsDBM {
 
     /*---------------------- Insertion Author Query ------------------------*/
-    public boolean insertAuthors(Authors author) {
+    public boolean insertAuthors(Authors author, Connection con) {
         try {
-            Connection.getCon().merge(author);
+            con.getCon().merge(author);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -33,24 +33,24 @@ public class AuthorsDBM {
     }
 
     /*-------------------- Retrieve Author Querys -------------------------*/
-    public List retrieveAllAuthors(){
-        return Connection.getCon().createQuery("SELECT a FROM Authors a "
+    public List retrieveAllAuthors(Connection con){
+        return con.getCon().createQuery("SELECT a FROM Authors a "
                 + "ORDER BY a.authorName").getResultList();
     }
     
-    public List retrieveAuthorByName(String authorName) {
-        return Connection.getCon().createQuery("SELECT a FROM Authors a "
+    public List retrieveAuthorByName(String authorName, Connection con) {
+        return con.getCon().createQuery("SELECT a FROM Authors a "
                 + "WHERE a.authorName LIKE CONCAT('%', :authorName, '%')")
                 .setParameter("authorName", authorName)
                 .getResultList();
     }
     
     /*---------------------- Remove Author Query --------------------------*/
-        public void removeAuthor(Authors author) {
+        public void removeAuthor(Authors author, Connection con) {
         try {
-            Connection.getCon().remove(Connection.getCon().find(Authors.class, author.getAuthor_id()));
+            con.getCon().remove(con.getCon().find(Authors.class, author.getAuthor_id()));
         } catch (Exception e) {
-            Connection.getCon().getTransaction().rollback();
+            con.getCon().getTransaction().rollback();
         }
     }
 }

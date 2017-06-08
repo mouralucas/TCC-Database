@@ -15,32 +15,33 @@ import java.util.List;
  */
 
 public class MoviesDBM {
-
     /*----------------------- Insertion Movie Query -------------------------*/
-    public boolean insertBook(Movies movie) {
+    public boolean insertMovie(Movies movie, Connection con) {
         try {
-            Connection.getCon().merge(movie);
+            con.getCon().merge(movie);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
+            con.getCon().getTransaction().rollback();
             return false;
         }
     }
 
     /*-------------------------Retrieve Movie Query -------------------------*/
-    public List retrieveAllMovies() {
-        return Connection.getCon().createQuery("SELECT m FROM Movies m "
+    public List retrieveAllMovies(Connection con) {
+        return con.getCon().createQuery("SELECT m FROM Movies m "
                 + "ORDER BY m.movieTitle").getResultList();
     }
 
-    public List retrieveMovieByTitle(String movieTitle) {
-        return Connection.getCon().createQuery("SELECT m FROM Movies m "
+    public List retrieveMovieByTitle(String movieTitle, Connection con) {
+        return con.getCon().createQuery("SELECT m FROM Movies m "
                 + "WHERE m.movieTitle LIKE CONCAT('%',:movieTitle,'%')")
                 .setParameter("movieTitle", movieTitle).getResultList();
     }
     
-    public List retrieveMovieByMultipleValues(String title, String director, String writer, String actor, String network, String book){
-        return Connection.getCon().createQuery("SELECT "
+    public List retrieveMovieByMultipleValues(String title, String director, String writer, String actor, String network, String book,
+            Connection con){
+        return con.getCon().createQuery("SELECT "
                 + "m.movieTitle, m.movieLenght, a.actorName, d.directorName, w.writerName, n.networkName, b.bookTitle "
                 + "FROM Movies m "
                 + "INNER JOIN m.movieActors a "
@@ -65,12 +66,12 @@ public class MoviesDBM {
     }
 
     /*------------------------- Remove Movie Query --------------------------*/
-    public void removeBook(Movies movie) {
+    public void removeMovie(Movies movie, Connection con) {
         try {
-            Connection.getCon().remove(Connection.getCon().find(Movies.class, movie.getMovie_id()));
+            con.getCon().remove(con.getCon().find(Movies.class, movie.getMovie_id()));
         } catch (Exception e) {
             e.printStackTrace();
-            Connection.getCon().getTransaction().rollback();
+            con.getCon().getTransaction().rollback();
         }
     }
 }

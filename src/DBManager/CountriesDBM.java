@@ -13,13 +13,12 @@ import java.util.List;
  * ------------- Universidade Tecnológica Federal do Paraná ---------------
  *
  */
-
 public class CountriesDBM {
 
     /*----------------------- Insertion Country Query -------------------------*/
-    public boolean insertCountries(Countries country) {
+    public boolean insertCountries(Countries country, Connection con) {
         try {
-            Connection.getCon().merge(country);
+            con.getCon().merge(country);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -28,26 +27,25 @@ public class CountriesDBM {
     }
 
     /*-------------------------Retrieve Country Querys ------------------------*/
-    public List retrieveAllCountries() {
-        return Connection.getCon().createQuery("SELECT c FROM Countries c "
+    public List retrieveAllCountries(Connection con) {
+        return con.getCon().createQuery("SELECT c FROM Countries c "
                 + "ORDER BY c.countryName").getResultList();
     }
 
-    public List retrieveCountryByName(String countryName) {
-        return Connection.getCon().createQuery("SELECT c FROM Countries c "
+    public List retrieveCountryByName(String countryName, Connection con) {
+        return con.getCon().createQuery("SELECT c FROM Countries c "
                 + "WHERE c.countryName LIKE CONCAT('%', :countryName, '%')")
                 .setParameter("countryName", countryName).getResultList();
     }
 
     /*------------------------- Remove Country Query --------------------------*/
-    public void removeCountry(Countries country) {
+    public void removeCountry(Countries country, Connection con) {
         try {
-            Connection.getCon()
-                    .remove(Connection.getCon()
-                            .find(Countries.class, country.getCountry_id()));
+            con.getCon().remove(con.getCon()
+                    .find(Countries.class, country.getCountry_id()));
         } catch (Exception e) {
             e.printStackTrace();
-            Connection.getCon().getTransaction().rollback();
+            con.getCon().getTransaction().rollback();
         }
     }
 }

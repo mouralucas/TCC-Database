@@ -16,10 +16,10 @@ import javax.persistence.Persistence;
 
 public class Connection {
 
-    private static EntityManagerFactory factory = null;
-    private static EntityManager em = null;
+    private  EntityManagerFactory factory = null;
+    private  EntityManager em = null;
 
-    public static boolean setCon() {
+    public boolean setCon() {
         if (factory == null || em == null) {
             factory = Persistence.createEntityManagerFactory("mysql_PU");
             em = factory.createEntityManager();
@@ -29,11 +29,11 @@ public class Connection {
         return false;
     }
 
-    public static EntityManager getCon() {
+    public EntityManager getCon() {
         return em;
     }
     
-    public static void closeCon(){
+    public void closeCon(){
         em.close();
         factory.close();
         System.out.println("Connection Done");

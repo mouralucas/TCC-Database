@@ -2020,12 +2020,15 @@ public class InsertActors
         c.setCountry_id(82);
         Actors actors499 = new Actors(500, "tempus lobortis fusce placerat", c, "pretium fringilla viverra ornare scelerisque");
         list.add(actors499);
-
-        Connection.getCon().getTransaction().begin();
+        
+        Connection con = new Connection();
+        con.setCon();
+        con.getCon().getTransaction().begin();
         list.forEach((iteration) -> {
-            actors4DBM.insertActors(iteration);
+            actors4DBM.insertActors(iteration, con);
         });
-        Connection.getCon().getTransaction().commit();
+        con.getCon().getTransaction().commit();
+        con.closeCon();
 
     }
 }

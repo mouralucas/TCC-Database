@@ -16,9 +16,9 @@ import java.util.List;
 public class GenresDBM {
 
     /*---------------------- Insertion Genre Query ------------------------*/
-    public boolean insertGenres(Genres genre) {
+    public boolean insertGenres(Genres genre, Connection con) {
         try {
-            Connection.getCon().merge(genre);
+            con.getCon().merge(genre);
             return true;
         } catch (Exception e) {
             return false;
@@ -26,23 +26,25 @@ public class GenresDBM {
     }
 
     /*-------------------- Retrieve Genre Querys -------------------------*/
-    public List retrieveAllGenres() {
-        return Connection.getCon().createQuery("SELECT g FROM Genres g "
+    public List retrieveAllGenres(Connection con) {
+        return con.getCon().createQuery(
+                "SELECT g FROM Genres g "
                 + "ORDER BY g.genreName").getResultList();
     }
 
-    public List retrieveGenreByName(String genreName) {
-        return Connection.getCon().createQuery("SELECT g FROM Genres g "
+    public List retrieveGenreByName(String genreName, Connection con) {
+        return con.getCon().createQuery(
+                "SELECT g FROM Genres g "
                 + "WHERE g.genreName LIKE CONCAT('%', :genreName, '%')")
                 .setParameter("genreName", genreName).getResultList();
     }
 
     /*---------------------- Remove Genre Query --------------------------*/
-    public void removeGenre(Genres genre) {
+    public void removeGenre(Genres genre, Connection con) {
         try {
-            Connection.getCon().remove(Connection.getCon().find(Genres.class, genre.getGenre_id()));
+            con.getCon().remove(con.getCon().find(Genres.class, genre.getGenre_id()));
         } catch (Exception e) {
-            Connection.getCon().getTransaction().rollback();
+            con.getCon().getTransaction().rollback();
         }
     }
 }

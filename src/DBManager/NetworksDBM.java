@@ -13,13 +13,12 @@ import java.util.List;
  * ------------- Universidade Tecnológica Federal do Paraná ---------------
  *
  */
-
 public class NetworksDBM {
 
     /*---------------------- Insertion Network Query ------------------------*/
-    public boolean insertNetworks(Networks network) {
+    public boolean insertNetworks(Networks network, Connection con) {
         try {
-            Connection.getCon().merge(network);
+            con.getCon().merge(network);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -28,23 +27,25 @@ public class NetworksDBM {
     }
 
     /*-------------------- Retrieve Nertwork Querys -------------------------*/
-    public List retrieveAllNetwork() {
-        return Connection.getCon().createQuery("SELECT nt FROM Networks nt "
+    public List retrieveAllNetwork(Connection con) {
+        return con.getCon().createQuery(
+                "SELECT nt FROM Networks nt "
                 + "ORDER BY nt.networkName").getResultList();
     }
 
-    public List retrieveNetworkByName(String networkName) {
-        return Connection.getCon().createQuery("SELECT nt FROM Networks nt "
+    public List retrieveNetworkByName(String networkName, Connection con) {
+        return con.getCon().createQuery(
+                "SELECT nt FROM Networks nt "
                 + "WHERE nt.networkName LIKE CONCAT('%', :networkName, '%')")
                 .setParameter("networkName", networkName).getResultList();
     }
 
     /*---------------------- Remove Network Query --------------------------*/
-    public void removeWriter(Networks network) {
+    public void removeWriter(Networks network, Connection con) {
         try {
-            Connection.getCon().remove(Connection.getCon().find(Networks.class, network.getNetwork_id()));
+            con.getCon().remove(con.getCon().find(Networks.class, network.getNetwork_id()));
         } catch (Exception e) {
-            Connection.getCon().getTransaction().rollback();
+            con.getCon().getTransaction().rollback();
         }
     }
 }

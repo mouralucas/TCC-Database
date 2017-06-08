@@ -17,9 +17,9 @@ import java.util.List;
 public class LanguagesDBM {
 
     /*---------------------- Insertion Language Query ------------------------*/
-    public boolean insertLanguages(Languages languages) {
+    public boolean insertLanguages(Languages languages, Connection con) {
         try {
-            Connection.getCon().persist(languages);
+            con.getCon().persist(languages);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -28,23 +28,23 @@ public class LanguagesDBM {
     }
 
     /*-------------------- Retrieve Languages Querys -------------------------*/
-    public List retrieveAllLanguages() {
-        return Connection.getCon().createQuery("SELECT l FROM Languages l "
+    public List retrieveAllLanguages(Connection con) {
+        return con.getCon().createQuery("SELECT l FROM Languages l "
                 + "ORDER BY l.languageName").getResultList();
     }
 
-    public List retrieveLanguageByName(String languageName) {
-        return Connection.getCon().createQuery("SELECT l FROM Languages l "
+    public List retrieveLanguageByName(String languageName, Connection con) {
+        return con.getCon().createQuery("SELECT l FROM Languages l "
                 + "WHERE l.languageName LIKE CONCAT('%', :languageName, '%')")
                 .setParameter("languageName", languageName).getResultList();
     }
 
     /*---------------------- Remove Languages Query --------------------------*/
-    public void removeLanguage(Languages language) {
+    public void removeLanguage(Languages language, Connection con) {
         try {
-            Connection.getCon().remove(Connection.getCon().find(Languages.class, language.getLanguage_id()));
+            con.getCon().remove(con.getCon().find(Languages.class, language.getLanguage_id()));
         } catch (Exception e) {
-            Connection.getCon().getTransaction().rollback();
+            con.getCon().getTransaction().rollback();
         }
     }
 

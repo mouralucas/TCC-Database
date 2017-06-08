@@ -17,9 +17,9 @@ import java.util.List;
 public class PublishersDBM {
 
     /*---------------------- Insertion Publisher Query ------------------------*/
-    public boolean insertPublishers(Publishers publisher) {
+    public boolean insertPublishers(Publishers publisher, Connection con) {
         try {
-            Connection.getCon().merge(publisher);
+            con.getCon().merge(publisher);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -28,24 +28,24 @@ public class PublishersDBM {
     }
 
     /*-------------------- Retrieve Publisher Querys -------------------------*/
-    public List retrieveAllPublishers() {
-        return Connection.getCon().createQuery("SELECT p FROM Publishers p "
+    public List retrieveAllPublishers(Connection con) {
+        return con.getCon().createQuery("SELECT p FROM Publishers p "
                 + "ORDER BY p.publisherName")
                 .getResultList();
     }
 
-    public List retrievePublisherByName(String publisherName) {
-        return Connection.getCon().createQuery("SELECT p FROM Publishers p "
+    public List retrievePublisherByName(String publisherName, Connection con) {
+        return con.getCon().createQuery("SELECT p FROM Publishers p "
                 + "WHERE p.publisherName LIKE CONCAT('%', :publisherName, '%')")
                 .setParameter("publisherName", publisherName).getResultList();
     }
 
     /*---------------------- Remove Publisher Query --------------------------*/
-    public void removePublisher(Publishers publisher) {
+    public void removePublisher(Publishers publisher, Connection con) {
         try {
-            Connection.getCon().remove(Connection.getCon().find(Publishers.class, publisher.getPublisher_id()));
+            con.getCon().remove(con.getCon().find(Publishers.class, publisher.getPublisher_id()));
         } catch (Exception e) {
-            Connection.getCon().getTransaction().rollback();
+            con.getCon().getTransaction().rollback();
         }
     }
 }

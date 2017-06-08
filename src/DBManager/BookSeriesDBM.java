@@ -17,9 +17,9 @@ import java.util.List;
 public class BookSeriesDBM {
 
     /*---------------------- Insertion BookSerie Query ------------------------*/
-    public boolean insertBookSeries(BookSeries bookSeries) {
+    public boolean insertBookSeries(BookSeries bookSeries, Connection con) {
         try {
-            Connection.getCon().merge(bookSeries);
+            con.getCon().merge(bookSeries);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -28,25 +28,25 @@ public class BookSeriesDBM {
     }
 
     /*-------------------- Retrieve BookSerie Querys -------------------------*/
-    public List retrieveAllBookSeries() {
-        return Connection.getCon().createQuery("SELECT bs FROM BookSeries bs "
+    public List retrieveAllBookSeries(Connection con) {
+        return con.getCon().createQuery("SELECT bs FROM BookSeries bs "
                 + "ORDER BY bs.bookSerieName")
                 .getResultList();
     }
 
-    public List retrieveBookSeriesByName(String bookSerieName) {
-        return Connection.getCon().createQuery("SELECT bs FROM BookSeries bs "
+    public List retrieveBookSeriesByName(String bookSerieName, Connection con) {
+        return con.getCon().createQuery("SELECT bs FROM BookSeries bs "
                 + "WHERE bs.bookSerieName LIKE CONCAT('%', :bookSerieName, '%')")
                 .setParameter("bookSerieName", bookSerieName)
                 .getResultList();
     }
 
     /*---------------------- Remove BookSerie Query --------------------------*/
-    public void removeBookSerie(BookSeries bookSerie) {
+    public void removeBookSerie(BookSeries bookSerie, Connection con) {
         try {
-            Connection.getCon().remove(Connection.getCon().find(BookSeries.class, bookSerie.getBookSerie_id()));
+            con.getCon().remove(con.getCon().find(BookSeries.class, bookSerie.getBookSerie_id()));
         } catch (Exception e) {
-            Connection.getCon().getTransaction().rollback();
+            con.getCon().getTransaction().rollback();
         }
     }
 }

@@ -22,9 +22,9 @@ import java.util.List;
 public class DirectorsDBM {
 
     /*---------------------- Insertion Director Query ------------------------*/
-    public boolean insertDirectors(Directors directors) {
+    public boolean insertDirectors(Directors directors, Connection con) {
         try {
-            Connection.getCon().merge(directors);
+            con.getCon().merge(directors);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -33,23 +33,23 @@ public class DirectorsDBM {
     }
 
     /*-------------------- Retrieve Director Querys -------------------------*/
-    public List retrieveAllDirectors() {
-        return Connection.getCon().createQuery("SELECT d FROM Directors d "
+    public List retrieveAllDirectors(Connection con) {
+        return con.getCon().createQuery("SELECT d FROM Directors d "
                 + "ORDER BY d.directorName").getResultList();
     }
 
-    public List retrieveDirectorByName(String directorName) {
-        return Connection.getCon().createQuery("SELECT d FROM Directors d "
+    public List retrieveDirectorByName(String directorName, Connection con) {
+        return con.getCon().createQuery("SELECT d FROM Directors d "
                 + "WHERE d.directorName LIKE CONCAT('%', :directorName, '%')")
                 .setParameter("directorName", directorName).getResultList();
     }
 
     /*---------------------- Remove Director Query --------------------------*/
-    public void removeGenre(Directors director) {
+    public void removeGenre(Directors director, Connection con) {
         try {
-            Connection.getCon().remove(Connection.getCon().find(Directors.class, director.getDirector_id()));
+            con.getCon().remove(con.getCon().find(Directors.class, director.getDirector_id()));
         } catch (Exception e) {
-            Connection.getCon().getTransaction().rollback();
+            con.getCon().getTransaction().rollback();
         }
     }
 }

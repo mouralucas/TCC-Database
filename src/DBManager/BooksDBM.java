@@ -17,32 +17,32 @@ import javax.persistence.Query;
 public class BooksDBM {
 
     /*----------------------- Insertion Book Query -------------------------*/
-    public boolean insertBook(Books books) {
+    public boolean insertBook(Books books, Connection con) {
         try {
-            Connection.getCon().merge(books);
+            con.getCon().merge(books);
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            con.getCon().getTransaction().rollback();
             return false;
         }
     }
 
     /*-------------------------Retrieve Book Query -------------------------*/
-    public List retrieveAllBooks() {
-        return Connection.getCon().createQuery("SELECT b FROM Books b "
+    public List retrieveAllBooks(Connection con) {
+        return con.getCon().createQuery("SELECT b FROM Books b "
                 + "ORDER BY b.bookTitle").getResultList();
     }
 
-    public List retrieveBookByTitle(String bookTitle) {
-        return Connection.getCon().createQuery("SELECT b FROM Books b "
+    public List retrieveBookByTitle(String bookTitle, Connection con) {
+        return con.getCon().createQuery("SELECT b FROM Books b "
                 + "WHERE b.bookTitle LIKE CONCAT('%',:bookTitle,'%')")
                 .setParameter("bookTitle", bookTitle)
                 .getResultList();
     }
 
     //Query that'll be used in the test
-    public List retrieveBookByMultipleValues(String isbn, String title, String author, String serie, String publisher) {
-        return Connection.getCon().createQuery("SELECT "
+    public List retrieveBookByMultipleValues(String isbn, String title, String author, String serie, String publisher, Connection con) {
+        return con.getCon().createQuery("SELECT "
                 + "b.bookISBN, b.bookTitle, a.authorName, bs.bookSerieName, p.publisherName "
                 + "FROM Books b "
                 + "INNER JOIN b.bookAuthors a "
@@ -65,7 +65,7 @@ public class BooksDBM {
 //    (select a.author_id
 //    FROM authors a INNER JOIN languages l ON l.language_id = a.language_id where l.languageName like "%auctor"));
 
-    public List retrieveBookByAuthorByLanguage(String languageName) {
+    public List retrieveBookByAuthorByLanguage(String languageName, Connection con) {
 //        Query queryAuthorLanguage = Connection.getCon().createQuery("SELECT ";
 //                + "a.author_id "
 //                + "FROM Authors a "
@@ -75,7 +75,7 @@ public class BooksDBM {
 //        ).setParameter("languageName", languageName);
 
 //Verificar porque a pesquisa não retornou corretamente
-        Query queryBook_Author = Connection.getCon().createQuery("SELECT "
+        Query queryBook_Author = con.getCon().createQuery("SELECT "
                 + "b "
                 + "FROM Books b "
                 + "JOIN Authors a"
@@ -91,12 +91,12 @@ public class BooksDBM {
     }
 
     /*------------------------- Remove Book Query --------------------------*/
-    public void removeBook(Books book) {
+    public void removeBook(Books book, Connection con) {
         try {
-            Connection.getCon().remove(Connection.getCon().find(Books.class, book.getBook_id()));
+            con.getCon().remove(con.getCon().find(Books.class, book.getBook_id()));
         } catch (Exception e) {
             e.printStackTrace();
-            Connection.getCon().getTransaction().rollback();
+            con.getCon().getTransaction().rollback();
         }
     }
 }

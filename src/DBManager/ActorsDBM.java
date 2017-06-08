@@ -19,9 +19,9 @@ import javax.persistence.EntityManager;
 public class ActorsDBM {
 
     /*---------------------- Insertion Actros Query ------------------------*/
-    public boolean insertActors(Actors actor) {
+    public boolean insertActors(Actors actor, Connection con) {
         try {
-            Connection.getCon().merge(actor);
+            con.getCon().merge(actor);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -30,23 +30,25 @@ public class ActorsDBM {
     }
 
     /*-------------------- Retrieve Actros Querys -------------------------*/
-    public List retrieveAllActors() {
-        return Connection.getCon().createQuery("SELECT ac FROM Actors ac "
+    public List retrieveAllActors(Connection con) {
+        return con.getCon().createQuery(
+                "SELECT ac FROM Actors ac "
                 + "ORDER BY ac.actorName").getResultList();
     }
 
-    public List retrieveDirectorByName(String actorName) {
-        return Connection.getCon().createQuery("SELECT ac FROM Actors ac "
+    public List retrieveDirectorByName(String actorName, Connection con) {
+        return con.getCon().createQuery(
+                "SELECT ac FROM Actors ac "
                 + "WHERE ac.actorName LIKE CONCAT('%', :actorName, '%')")
                 .setParameter("writerName", actorName).getResultList();
     }
 
     /*---------------------- Remove Writer Query --------------------------*/
-    public void removeWriter(Actors actor) {
+    public void removeWriter(Actors actor, Connection con) {
         try {
-            Connection.getCon().remove(Connection.getCon().find(Actors.class, actor.getActor_id()));
+            con.getCon().remove(con.getCon().find(Actors.class, actor.getActor_id()));
         } catch (Exception e) {
-            Connection.getCon().getTransaction().rollback();
+            con.getCon().getTransaction().rollback();
         }
     }
 

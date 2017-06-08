@@ -42,7 +42,7 @@ import t_files.OpenTestFiles;
  *
  */
 public class TestInsertMovie10 extends AbstractJavaSamplerClient implements Serializable {
-    boolean con = Connection.setCon();
+
     OpenTestFiles openTestFiles = new OpenTestFiles();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
@@ -60,15 +60,6 @@ public class TestInsertMovie10 extends AbstractJavaSamplerClient implements Seri
     NetworksDBM ndbm = new NetworksDBM();
     BooksDBM bkdbm = new BooksDBM();
 
-    List<Directors> listDirectors = ddbm.retrieveAllDirectors();
-    List<Countries> listCountries = cdbm.retrieveAllCountries();
-    List<Languages> listLanguages = ldbm.retrieveAllLanguages();
-    List<Writers> listWrites = wdbm.retrieveAllWriters();
-    List<Genres> listGenrres = gdbm.retrieveAllGenres();
-    List<Actors> listActors = acdbm.retrieveAllActors();
-    List<Networks> listNetworks = ndbm.retrieveAllNetwork();
-    List<Books> listBooks = bkdbm.retrieveAllBooks();
-
     Directors director;
     Countries country;
     Languages language;
@@ -82,79 +73,7 @@ public class TestInsertMovie10 extends AbstractJavaSamplerClient implements Seri
 
     @Override
     public SampleResult runTest(JavaSamplerContext jsc) {
-        
         SampleResult result = new SampleResult();
-        inserts = openTestFiles.open("insert\\insertMovies", testSize);
-
-        result.sampleStart();
-        Connection.getCon().getTransaction().begin();
-        inserts.forEach((iteration) -> {
-
-            listDirectors.forEach((i) -> {
-                if (iteration[5].equals(i.getDirectorName())) {
-                    director = i;
-                }
-            });
-
-            listCountries.forEach((i) -> {
-                if (iteration[6].equals(i.getCountryName())) {
-                    country = i;
-                }
-            });
-
-            listLanguages.forEach((i) -> {
-                if (iteration[7].equals(i.getLanguageName())) {
-                    language = i;
-                }
-            });
-
-            listWrites.forEach((i) -> {
-                if (iteration[8].equals(i.getWriterName())) {
-                    writers.add(i);
-                }
-            });
-
-            listGenrres.forEach((i) -> {
-                if (iteration[9].equals(i.getGenreName())) {
-                    genres.add(i);
-                }
-            });
-
-            listActors.forEach((i) -> {
-                if (iteration[10].equals(i.getActorName())) {
-                    actors.add(i);
-                }
-            });
-
-            listNetworks.forEach((i) -> {
-                if (iteration[11].equals(i.getNetworkName())) {
-                    networks.add(i);
-                }
-            });
-
-            listBooks.forEach((i) -> {
-                if (iteration[12].equals(i.getBookTitle())) {
-                    books.add(i);
-                }
-            });
-
-            try {
-                movies = new Movies(iteration[0], iteration[1], (Date) dateFormat.parse(iteration[2]),
-                        Integer.parseInt(iteration[3]), iteration[4], director, country, language, writers,
-                        genres, actors, networks, books);
-            } catch (ParseException ex) {
-                Logger.getLogger(TestInsertMovie10.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            mdbm.insertBook(movies);
-
-        });
-        Connection.getCon().getTransaction().commit();
-        result.sampleEnd();
-        Connection.closeCon();
-
-        System.out.println("\n\nTempo de execução do teste: " + result.getTime());
-        result.setSuccessful(true);
         return result;
     }
 
@@ -163,8 +82,22 @@ public class TestInsertMovie10 extends AbstractJavaSamplerClient implements Seri
         SampleResult result = new SampleResult();
         inserts = openTestFiles.open("insert\\insertMovies", testSize);
 
+        Connection con = new Connection();
+        con.setCon();
+
+        List<Directors> listDirectors = ddbm.retrieveAllDirectors(con);
+//        List<Countries> listCountries = cdbm.retrieveAllCountries();
+//        List<Languages> listLanguages = ldbm.retrieveAllLanguages();
+//        List<Writers> listWrites = wdbm.retrieveAllWriters();
+//        List<Genres> listGenrres = gdbm.retrieveAllGenres();
+//        List<Actors> listActors = acdbm.retrieveAllActors();
+//        List<Networks> listNetworks = ndbm.retrieveAllNetwork();
+//        List<Books> listBooks = bkdbm.retrieveAllBooks();
+
         result.sampleStart();
-        Connection.getCon().getTransaction().begin();
+        con.getCon().getTransaction().begin();
+        con.getCon().flush();
+        con.getCon().clear();
         inserts.forEach((iteration) -> {
 
             listDirectors.forEach((i) -> {
@@ -173,47 +106,47 @@ public class TestInsertMovie10 extends AbstractJavaSamplerClient implements Seri
                 }
             });
 
-            listCountries.forEach((i) -> {
-                if (iteration[6].equals(i.getCountryName())) {
-                    country = i;
-                }
-            });
-
-            listLanguages.forEach((i) -> {
-                if (iteration[7].equals(i.getLanguageName())) {
-                    language = i;
-                }
-            });
-
-            listWrites.forEach((i) -> {
-                if (iteration[8].equals(i.getWriterName())) {
-                    writers.add(i);
-                }
-            });
-
-            listGenrres.forEach((i) -> {
-                if (iteration[9].equals(i.getGenreName())) {
-                    genres.add(i);
-                }
-            });
-
-            listActors.forEach((i) -> {
-                if (iteration[10].equals(i.getActorName())) {
-                    actors.add(i);
-                }
-            });
-
-            listNetworks.forEach((i) -> {
-                if (iteration[11].equals(i.getNetworkName())) {
-                    networks.add(i);
-                }
-            });
-
-            listBooks.forEach((i) -> {
-                if (iteration[12].equals(i.getBookTitle())) {
-                    books.add(i);
-                }
-            });
+//            listCountries.forEach((i) -> {
+//                if (iteration[6].equals(i.getCountryName())) {
+//                    country = i;
+//                }
+//            });
+//
+//            listLanguages.forEach((i) -> {
+//                if (iteration[7].equals(i.getLanguageName())) {
+//                    language = i;
+//                }
+//            });
+//
+//            listWrites.forEach((i) -> {
+//                if (iteration[8].equals(i.getWriterName())) {
+//                    writers.add(i);
+//                }
+//            });
+//
+//            listGenrres.forEach((i) -> {
+//                if (iteration[9].equals(i.getGenreName())) {
+//                    genres.add(i);
+//                }
+//            });
+//
+//            listActors.forEach((i) -> {
+//                if (iteration[10].equals(i.getActorName())) {
+//                    actors.add(i);
+//                }
+//            });
+//
+//            listNetworks.forEach((i) -> {
+//                if (iteration[11].equals(i.getNetworkName())) {
+//                    networks.add(i);
+//                }
+//            });
+//
+//            listBooks.forEach((i) -> {
+//                if (iteration[12].equals(i.getBookTitle())) {
+//                    books.add(i);
+//                }
+//            });
 
             try {
                 movies = new Movies(iteration[0], iteration[1], (Date) dateFormat.parse(iteration[2]),
@@ -223,12 +156,12 @@ public class TestInsertMovie10 extends AbstractJavaSamplerClient implements Seri
                 Logger.getLogger(TestInsertMovie10.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            mdbm.insertBook(movies);
+            mdbm.insertMovie(movies,con);
 
         });
-        Connection.getCon().getTransaction().commit();
+        con.getCon().getTransaction().commit();
+        con.closeCon();
         result.sampleEnd();
-        Connection.closeCon();
 
         System.out.println("\n\nTempo de execução do teste: " + result.getTime());
         result.setSuccessful(true);

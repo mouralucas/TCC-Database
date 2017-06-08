@@ -23,7 +23,8 @@ public class UserDBM {
 //    private EntityManager em = factory.createEntityManager();
     
 //    boolean con = Connection.setCon();
-    EntityManager em = Connection.getCon(); 
+    Connection con = new Connection();
+    EntityManager em = con.getCon(); 
     
 
     public Users getUser(String userName, String password) {
