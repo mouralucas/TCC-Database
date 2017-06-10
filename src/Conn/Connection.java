@@ -20,8 +20,9 @@ public class Connection {
     private  EntityManager em = null;
 
     public boolean setCon() {
+        Persistence p = new Persistence();
         if (factory == null || em == null) {
-            factory = Persistence.createEntityManagerFactory("mysql_PU");
+            factory = p.createEntityManagerFactory("mysql_PU");
             em = factory.createEntityManager();
             return true;
         }

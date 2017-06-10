@@ -50,9 +50,10 @@
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/newlibrary_v4?zeroDateTimeBehavior=convertToNull"/>
             <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="hibernate.ejb.entitymanager_factory_name" value="mysql_PU"/>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.password" value="rachel"/>
-            <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+            <!--<property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>-->
             <property name="hibernate.hbm2ddl.auto" value="update"/>
         </properties>
     </persistence-unit>

@@ -38,7 +38,7 @@ import t_files.OpenTestFiles;
  * ------------- Universidade Tecnológica Federal do Paraná ---------------
  *
  */
-public class TestInsertBook10 extends AbstractJavaSamplerClient implements Serializable {
+public class TestInsertBook extends AbstractJavaSamplerClient implements Serializable {
 
     OpenTestFiles openTestFiles = new OpenTestFiles();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -67,7 +67,6 @@ public class TestInsertBook10 extends AbstractJavaSamplerClient implements Seria
 
     @Override
     public SampleResult runTest(JavaSamplerContext jsc) {
-
         SampleResult result = new SampleResult();
 
         return result;
@@ -132,16 +131,23 @@ public class TestInsertBook10 extends AbstractJavaSamplerClient implements Seria
                         Integer.parseInt(iterator[6]), iterator[7], iterator[8], authors,
                         bookSeries, languages, publisher, genres);
             } catch (ParseException ex) {
-                Logger.getLogger(TestInsertBook10.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TestInsertBook.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             //abrir transaction
             bkdbm.insertBook(books, con);
+            
+            authors.clear();
+            bookSeries.clear();
+            languages.clear();
+            genres.clear();
+            
+            
         });
         con.getCon().getTransaction().commit();
         result.sampleEnd();
         con.closeCon();
-        
+
         double min = ((result.getTime() / 1000) / 60);
 
         System.out.println("\n\nTempo de execução do teste (seg): " + result.getTime());

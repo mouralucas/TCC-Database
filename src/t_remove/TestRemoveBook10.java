@@ -10,7 +10,6 @@ import java.util.List;
 import org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient;
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
 import org.apache.jmeter.samplers.SampleResult;
-import t_files.OpenTestFiles;
 
 /**
  * @author Jociane Franzoni de Lima
@@ -24,7 +23,7 @@ import t_files.OpenTestFiles;
 public class TestRemoveBook10 extends AbstractJavaSamplerClient implements Serializable {
 
     private BooksDBM booksDBM = new BooksDBM();
-    private final int testSize = 10;
+    private final int testSize = 50000;
     Books booksAux;
     List<Object> objectReferenceBooks = new ArrayList<>();
     List<Books> books = new ArrayList<>();
