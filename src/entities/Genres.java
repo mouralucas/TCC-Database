@@ -7,9 +7,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 /**
+ * @author Jociane Franzoni de Lima
+ * @author Lucas Penha de Moura
  *
- * @author Lucas e Jociane
+ * ------------------- Trabalho de Conclusão de Curso ---------------------
+ * ---------------------- Engenharia de Computação ------------------------
+ * ------------- Universidade Tecnológica Federal do Paraná ---------------
+ *
  */
+
 @Entity
 public class Genres implements Serializable {
 

@@ -15,9 +15,15 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
+ * @author Jociane Franzoni de Lima
+ * @author Lucas Penha de Moura
  *
- * @author Lucas e Jociane
+ * ------------------- Trabalho de Conclusão de Curso ---------------------
+ * ---------------------- Engenharia de Computação ------------------------
+ * ------------- Universidade Tecnológica Federal do Paraná ---------------
+ *
  */
+
 @Entity
 public class Mangas implements Serializable {
 

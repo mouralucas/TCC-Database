@@ -1,4 +1,4 @@
-package t_Inserts;
+ package t_Inserts;
 
 import Conn.Connection;
 import DBManager.ActorsDBM;
@@ -46,7 +46,7 @@ public class TestInsertMovie10 extends AbstractJavaSamplerClient implements Seri
     OpenTestFiles openTestFiles = new OpenTestFiles();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-    private final String testSize = "10";
+    private final int testSize = 10;
 
     Movies movies;
 
@@ -86,13 +86,13 @@ public class TestInsertMovie10 extends AbstractJavaSamplerClient implements Seri
         con.setCon();
 
         List<Directors> listDirectors = ddbm.retrieveAllDirectors(con);
-//        List<Countries> listCountries = cdbm.retrieveAllCountries();
-//        List<Languages> listLanguages = ldbm.retrieveAllLanguages();
-//        List<Writers> listWrites = wdbm.retrieveAllWriters();
-//        List<Genres> listGenrres = gdbm.retrieveAllGenres();
-//        List<Actors> listActors = acdbm.retrieveAllActors();
-//        List<Networks> listNetworks = ndbm.retrieveAllNetwork();
-//        List<Books> listBooks = bkdbm.retrieveAllBooks();
+        List<Countries> listCountries = cdbm.retrieveAllCountries(con);
+        List<Languages> listLanguages = ldbm.retrieveAllLanguages(con);
+        List<Writers> listWrites = wdbm.retrieveAllWriters(con);
+        List<Genres> listGenrres = gdbm.retrieveAllGenres(con);
+        List<Actors> listActors = acdbm.retrieveAllActors(con);
+        List<Networks> listNetworks = ndbm.retrieveAllNetwork(con);
+        List<Books> listBooks = bkdbm.retrieveAllBooks(con);
 
         result.sampleStart();
         con.getCon().getTransaction().begin();
@@ -106,47 +106,47 @@ public class TestInsertMovie10 extends AbstractJavaSamplerClient implements Seri
                 }
             });
 
-//            listCountries.forEach((i) -> {
-//                if (iteration[6].equals(i.getCountryName())) {
-//                    country = i;
-//                }
-//            });
-//
-//            listLanguages.forEach((i) -> {
-//                if (iteration[7].equals(i.getLanguageName())) {
-//                    language = i;
-//                }
-//            });
-//
-//            listWrites.forEach((i) -> {
-//                if (iteration[8].equals(i.getWriterName())) {
-//                    writers.add(i);
-//                }
-//            });
-//
-//            listGenrres.forEach((i) -> {
-//                if (iteration[9].equals(i.getGenreName())) {
-//                    genres.add(i);
-//                }
-//            });
-//
-//            listActors.forEach((i) -> {
-//                if (iteration[10].equals(i.getActorName())) {
-//                    actors.add(i);
-//                }
-//            });
-//
-//            listNetworks.forEach((i) -> {
-//                if (iteration[11].equals(i.getNetworkName())) {
-//                    networks.add(i);
-//                }
-//            });
-//
-//            listBooks.forEach((i) -> {
-//                if (iteration[12].equals(i.getBookTitle())) {
-//                    books.add(i);
-//                }
-//            });
+            listCountries.forEach((i) -> {
+                if (iteration[6].equals(i.getCountryName())) {
+                    country = i;
+                }
+            });
+
+            listLanguages.forEach((i) -> {
+                if (iteration[7].equals(i.getLanguageName())) {
+                    language = i;
+                }
+            });
+
+            listWrites.forEach((i) -> {
+                if (iteration[8].equals(i.getWriterName())) {
+                    writers.add(i);
+                }
+            });
+
+            listGenrres.forEach((i) -> {
+                if (iteration[9].equals(i.getGenreName())) {
+                    genres.add(i);
+                }
+            });
+
+            listActors.forEach((i) -> {
+                if (iteration[10].equals(i.getActorName())) {
+                    actors.add(i);
+                }
+            });
+
+            listNetworks.forEach((i) -> {
+                if (iteration[11].equals(i.getNetworkName())) {
+                    networks.add(i);
+                }
+            });
+
+            listBooks.forEach((i) -> {
+                if (iteration[12].equals(i.getBookTitle())) {
+                    books.add(i);
+                }
+            });
 
             try {
                 movies = new Movies(iteration[0], iteration[1], (Date) dateFormat.parse(iteration[2]),

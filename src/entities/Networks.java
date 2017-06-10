@@ -15,9 +15,15 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 /**
+ * @author Jociane Franzoni de Lima
+ * @author Lucas Penha de Moura
  *
- * @author lucas
+ * ------------------- Trabalho de Conclusão de Curso ---------------------
+ * ---------------------- Engenharia de Computação ------------------------
+ * ------------- Universidade Tecnológica Federal do Paraná ---------------
+ *
  */
+
 @Entity
 public class Networks implements Serializable {
 

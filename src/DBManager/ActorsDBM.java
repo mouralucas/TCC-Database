@@ -2,9 +2,7 @@ package DBManager;
 
 import Conn.Connection;
 import entities.Actors;
-import entities.Writers;
 import java.util.List;
-import javax.persistence.EntityManager;
 
 /**
  * @author Jociane Franzoni de Lima
