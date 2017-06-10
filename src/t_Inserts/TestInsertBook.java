@@ -43,7 +43,7 @@ public class TestInsertBook extends AbstractJavaSamplerClient implements Seriali
     OpenTestFiles openTestFiles = new OpenTestFiles();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-    private final int testSize = 500;
+    private final int testSize = 10;
 
     Books books;
 
@@ -68,6 +68,84 @@ public class TestInsertBook extends AbstractJavaSamplerClient implements Seriali
     @Override
     public SampleResult runTest(JavaSamplerContext jsc) {
         SampleResult result = new SampleResult();
+        inserts = openTestFiles.open("insert\\insertBooks", testSize);
+
+        Connection con = new Connection();
+        con.setCon();
+
+        //This information is used to insert a new Book to the database
+        List<Languages> listLanguages = ldbm.retrieveAllLanguages(con);
+        List<Genres> listGenrres = gdbm.retrieveAllGenres(con);
+        List<Publishers> listPublisers = pdbm.retrieveAllPublishers(con);
+        List<Authors> listAuthors = adbm.retrieveAllAuthors(con);
+        List<BookSeries> listBookSeries = bsdbm.retrieveAllBookSeries(con);
+
+        result.sampleStart();
+        con.getCon().getTransaction().begin();
+        inserts.forEach((iterator) -> {
+            //find auhtor
+            listAuthors.forEach((i) -> {
+                if (iterator[9].equals(i.getAuthorName())) {
+                    authors.add(i);
+                }
+            });
+
+            //find book serie
+            listBookSeries.forEach((i) -> {
+                if (iterator[10].equals(i.getSerieName())) {
+                    bookSeries.add(i);
+                }
+            });
+
+            //find language
+            listLanguages.forEach((i) -> {
+                if (iterator[11].equals(i.getLanguage_id())) {
+                    languages.add(i);
+                }
+            });
+
+            //find publisher
+            listPublisers.forEach((i) -> {
+                if (iterator[12].equals(i.getPublisherName())) {
+                    publisher = i;
+                }
+            });
+
+            //find genres
+            listGenrres.forEach((i) -> {
+                if (iterator[13].equals(i.getGenreName())) {
+                    genres.add(i);
+                }
+            });
+
+            try {
+                books = new Books(iterator[0], iterator[1], iterator[2], Integer.parseInt(iterator[3]),
+                        (Date) dateFormat.parse(iterator[4]), Double.parseDouble(iterator[5].replace(",", ".")),
+                        Integer.parseInt(iterator[6]), iterator[7], iterator[8], authors,
+                        bookSeries, languages, publisher, genres);
+            } catch (ParseException ex) {
+                Logger.getLogger(TestInsertBook.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            //abrir transaction
+            bkdbm.insertBook(books, con);
+            
+            authors.clear();
+            bookSeries.clear();
+            languages.clear();
+            genres.clear();
+            
+            
+        });
+        con.getCon().getTransaction().commit();
+        result.sampleEnd();
+        con.closeCon();
+
+        double min = ((result.getTime() / 1000) / 60);
+
+        System.out.println("\n\nTempo de execução do teste (seg): " + result.getTime());
+        System.out.println("Tempo de execução do teste (min):" + min);
+        result.setSuccessful(true);
 
         return result;
     }

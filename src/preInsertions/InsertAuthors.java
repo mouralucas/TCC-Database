@@ -18,11 +18,13 @@ public class InsertAuthors
     AuthorsDBM authorsDBM = new AuthorsDBM();
     List<Authors> list = new ArrayList<>();
     Countries c = new Countries();
-    Languages l = new Languages();
+    Languages l;
 
     public void insert() {
 
+        l = new Languages();
         l.setLanguage_id(37);
+        
         c.setCountry_id(99);
         Authors au0 = new Authors(1, "morbi sagittis", l, c, "vesti tempor elementum euismod risus");
         list.add(au0);

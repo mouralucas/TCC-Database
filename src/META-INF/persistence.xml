@@ -16,7 +16,6 @@
         <class>entities.Networks</class>
         <class>entities.Publishers</class>
         <class>entities.TVSeries</class>
-        <class>entities.Users</class>
         <class>entities.Writers</class>
         <properties>
             <property name="hibernate.ogm.datastore.provider" value="mongodb"/>
@@ -45,7 +44,6 @@
         <class>entities.Networks</class>
         <class>entities.Publishers</class>
         <class>entities.TVSeries</class>
-        <class>entities.Users</class>
         <class>entities.Writers</class>
         <properties>
             <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/newlibrary_v4?zeroDateTimeBehavior=convertToNull"/>
