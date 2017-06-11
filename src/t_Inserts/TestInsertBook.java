@@ -43,7 +43,7 @@ public class TestInsertBook extends AbstractJavaSamplerClient implements Seriali
     OpenTestFiles openTestFiles = new OpenTestFiles();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-    private final int testSize = 10;
+    private final int testSize = 5000;
 
     Books books;
 
