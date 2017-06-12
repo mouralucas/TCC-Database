@@ -21,7 +21,7 @@ public class CountriesDBM {
             con.getCon().merge(country);
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            con.getCon().getTransaction().rollback();
             return false;
         }
     }
@@ -44,7 +44,6 @@ public class CountriesDBM {
             con.getCon().remove(con.getCon()
                     .find(Countries.class, country.getCountry_id()));
         } catch (Exception e) {
-            e.printStackTrace();
             con.getCon().getTransaction().rollback();
         }
     }

@@ -22,7 +22,7 @@ public class BookSeriesDBM {
             con.getCon().merge(bookSeries);
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            con.getCon().getTransaction().rollback();
             return false;
         }
     }

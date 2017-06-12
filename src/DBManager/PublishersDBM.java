@@ -13,7 +13,6 @@ import java.util.List;
  * ------------- Universidade Tecnológica Federal do Paraná ---------------
  *
  */
-
 public class PublishersDBM {
 
     /*---------------------- Insertion Publisher Query ------------------------*/
@@ -22,7 +21,7 @@ public class PublishersDBM {
             con.getCon().merge(publisher);
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            con.getCon().getTransaction().rollback();
             return false;
         }
     }

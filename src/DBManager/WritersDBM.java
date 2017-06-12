@@ -13,7 +13,6 @@ import java.util.List;
  * ------------- Universidade Tecnológica Federal do Paraná ---------------
  *
  */
-
 public class WritersDBM {
 
     /*---------------------- Insertion Writer Query ------------------------*/
@@ -22,7 +21,7 @@ public class WritersDBM {
             con.getCon().merge(writers);
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            con.getCon().getTransaction().rollback();
             return false;
         }
     }

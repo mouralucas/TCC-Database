@@ -22,7 +22,7 @@ public class LanguagesDBM {
             con.getCon().persist(languages);
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            con.getCon().getTransaction().rollback();
             return false;
         }
     }

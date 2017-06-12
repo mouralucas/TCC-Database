@@ -22,7 +22,7 @@ public class AuthorsDBM {
             con.getCon().merge(author);
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            con.getCon().getTransaction().rollback();
             return false;
         }
     }

@@ -95,7 +95,6 @@ public class BooksDBM {
         try {
             con.getCon().remove(con.getCon().find(Books.class, book.getBook_id()));
         } catch (Exception e) {
-            e.printStackTrace();
             con.getCon().getTransaction().rollback();
         }
     }

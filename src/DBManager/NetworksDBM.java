@@ -21,7 +21,7 @@ public class NetworksDBM {
             con.getCon().merge(network);
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            con.getCon().getTransaction().rollback();
             return false;
         }
     }

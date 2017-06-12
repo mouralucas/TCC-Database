@@ -13,7 +13,6 @@ import java.util.List;
  * ------------- Universidade Tecnológica Federal do Paraná ---------------
  *
  */
-
 public class DirectorsDBM {
 
     /*---------------------- Insertion Director Query ------------------------*/
@@ -22,7 +21,7 @@ public class DirectorsDBM {
             con.getCon().merge(directors);
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            con.getCon().getTransaction().rollback();
             return false;
         }
     }

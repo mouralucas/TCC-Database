@@ -139,8 +139,7 @@ public class TestInsertMovie10 extends AbstractJavaSamplerClient implements Seri
                 }
             });
 
-           // books.add(listBooks.get(r.nextInt(listBooks.size())));
-
+            // books.add(listBooks.get(r.nextInt(listBooks.size())));
             try {
                 movies = new Movies(iteration[0], iteration[1], (Date) dateFormat.parse(iteration[2]),
                         Integer.parseInt(iteration[3]), iteration[4], director, country, language, writers,

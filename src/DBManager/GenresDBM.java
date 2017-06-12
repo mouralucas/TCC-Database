@@ -21,6 +21,7 @@ public class GenresDBM {
             con.getCon().merge(genre);
             return true;
         } catch (Exception e) {
+            con.getCon().getTransaction().rollback();
             return false;
         }
     }
