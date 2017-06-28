@@ -72,6 +72,8 @@ public class TestInsertMovie10 extends AbstractJavaSamplerClient implements Seri
     List<Networks> networks = new ArrayList<>();
     List<Books> books = new ArrayList<>();
 
+    List<Movies> moviesToBeInserted = new ArrayList<>();
+
     List<String[]> inserts = new ArrayList<>();
 
     @Override
@@ -89,12 +91,8 @@ public class TestInsertMovie10 extends AbstractJavaSamplerClient implements Seri
         List<Genres> listGenrres = gdbm.retrieveAllGenres(con);
         List<Actors> listActors = acdbm.retrieveAllActors(con);
         List<Networks> listNetworks = ndbm.retrieveAllNetwork(con);
-        //List<Books> listBooks = bkdbm.retrieveAllBooks(con);
+        List<Books> listBooks = bkdbm.retrieveAllBooks(con);
 
-        result.sampleStart();
-        con.getCon().getTransaction().begin();
-        con.getCon().flush();
-        con.getCon().clear();
         inserts.forEach((iteration) -> {
 
             listDirectors.forEach((i) -> {
@@ -139,7 +137,8 @@ public class TestInsertMovie10 extends AbstractJavaSamplerClient implements Seri
                 }
             });
 
-            // books.add(listBooks.get(r.nextInt(listBooks.size())));
+            books.add(listBooks.get(r.nextInt(listBooks.size())));
+            
             try {
                 movies = new Movies(iteration[0], iteration[1], (Date) dateFormat.parse(iteration[2]),
                         Integer.parseInt(iteration[3]), iteration[4], director, country, language, writers,
@@ -148,7 +147,7 @@ public class TestInsertMovie10 extends AbstractJavaSamplerClient implements Seri
                 Logger.getLogger(TestInsertMovie10.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            mdbm.insertMovie(movies, con);
+            moviesToBeInserted.add(movies);
 
             writers.clear();
             genres.clear();
@@ -157,6 +156,14 @@ public class TestInsertMovie10 extends AbstractJavaSamplerClient implements Seri
             books.clear();
 
         });
+
+        result.sampleStart();
+        con.getCon().getTransaction().begin();
+
+        moviesToBeInserted.forEach((iterator) -> {
+            mdbm.insertMovie(iterator, con);
+        });
+        
         con.getCon().getTransaction().commit();
         con.closeCon();
         result.sampleEnd();
