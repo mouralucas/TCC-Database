@@ -69,9 +69,14 @@ public class TesteUpdateMovie extends AbstractJavaSamplerClient implements Seria
         
         //grava os novos valores no banco
         result.sampleStart();
+        con.getCon().getTransaction().begin();
         moviesToBeUpdated.forEach((iterator) -> {
             moviesDBM.insertMovie(iterator, con);
         });
+        con.getCon().getTransaction().commit();
+        result.sampleEnd();
+        con.closeCon();
+        
         System.out.println("\n\nTempo de execução do teste: " + result.getTime());
         result.setSuccessful(true);
 

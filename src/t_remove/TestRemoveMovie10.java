@@ -26,7 +26,7 @@ public class TestRemoveMovie10 extends AbstractJavaSamplerClient implements Seri
 
     OpenTestFiles openTestFiles = new OpenTestFiles();
     private MoviesDBM moviesDBM = new MoviesDBM();
-    
+
     private final int testSize = 10;
 
     Movies moviesAux;
@@ -48,18 +48,17 @@ public class TestRemoveMovie10 extends AbstractJavaSamplerClient implements Seri
         SampleResult result = new SampleResult();
         Connection con = new Connection();
         con.setCon();
-        
-        
+
         allMovies = moviesDBM.retrieveAllMovies(con);
 
         con.getCon().getTransaction().begin();
         result.sampleStart();
-        for(int i = 0; i < testSize; i++){
+        for (int i = 0; i < testSize; i++) {
             moviesDBM.removeMovie(allMovies.get(i), con);
         }
         con.getCon().getTransaction().commit();
-        con.closeCon();
         result.sampleEnd();
+        con.closeCon();
 
         System.out.println("\n\nTempo de execução do teste: " + result.getTime());
         result.setSuccessful(true);
