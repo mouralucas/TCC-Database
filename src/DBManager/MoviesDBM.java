@@ -22,7 +22,6 @@ public class MoviesDBM {
             return true;
         } catch (Exception e) {
             con.getCon().getTransaction().rollback();
-            con.getCon().getTransaction().rollback();
             return false;
         }
     }

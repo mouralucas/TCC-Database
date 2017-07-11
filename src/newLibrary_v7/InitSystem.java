@@ -1,7 +1,6 @@
 package newLibrary_v7;
 
-import t_Inserts.TestInsertMovie10;
-import t_update.TesteUpdateMovie;
+import t_Inserts.TestInsertBook;
 
 /**
  * @author Jociane Franzoni de Lima
@@ -18,6 +17,10 @@ public class InitSystem {
 
 //        InsertData insertaDta = new InsertData();
 //        insertaDta.insertData();
+
+//        Connection con = new Connection();
+//        con.setCon();
+//        con.closeCon();
         
 //        TestRemoveMovie10 trmbooks10 = new TestRemoveMovie10();
 //        trmbooks10.testMethod();
@@ -28,11 +31,11 @@ public class InitSystem {
 //        TestInsertMovie10 movie10 = new TestInsertMovie10();
 //        movie10.testMethod();
 
-           TesteUpdateMovie tup = new TesteUpdateMovie();
-           tup.testMethod();
+//           TesteUpdateMovie tup = new TesteUpdateMovie();
+//           tup.testMethod();
 
-//        TestInsertBook book10 = new TestInsertBook();
-//        book10.testMethod();
+        TestInsertBook book10 = new TestInsertBook();
+        book10.testMethod();
 
 //        TestRemoveMovie10 trmmovie = new TestRemoveMovie10();
 //        trmmovie.testMethod();

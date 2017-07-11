@@ -27,7 +27,7 @@ public class TestRemoveMovie10 extends AbstractJavaSamplerClient implements Seri
     OpenTestFiles openTestFiles = new OpenTestFiles();
     private MoviesDBM moviesDBM = new MoviesDBM();
 
-    private final int testSize = 10;
+    private final int testSize = 100;
 
     Movies moviesAux;
     List<Object> objectReferenceMovies = new ArrayList<>();
