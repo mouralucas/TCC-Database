@@ -42,7 +42,7 @@ import t_files.OpenTestFiles;
  * ------------- Universidade Tecnológica Federal do Paraná ---------------
  *
  */
-public class TestInsertMovie200 extends AbstractJavaSamplerClient implements Serializable {
+public class TestInsertMovie100 extends AbstractJavaSamplerClient implements Serializable {
 
     OpenTestFiles openTestFiles = new OpenTestFiles();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -144,7 +144,7 @@ public class TestInsertMovie200 extends AbstractJavaSamplerClient implements Ser
                         Integer.parseInt(iteration[3]), iteration[4], director, country, language, writers,
                         genres, actors, networks, books);
             } catch (ParseException ex) {
-                Logger.getLogger(TestInsertMovie200.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TestInsertMovie100.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             moviesToBeInserted.add(movies);
@@ -246,7 +246,7 @@ public class TestInsertMovie200 extends AbstractJavaSamplerClient implements Ser
                         Integer.parseInt(iteration[3]), iteration[4], director, country, language, writers,
                         genres, actors, networks, books);
             } catch (ParseException ex) {
-                Logger.getLogger(TestInsertMovie200.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TestInsertMovie100.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             mdbm.insertMovie(movies, con);
