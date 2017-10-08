@@ -1,5 +1,7 @@
 package newLibrary_v7;
 
+import Conn.Connection;
+import preInsertions.InsertData;
 import t_Inserts.TestInsertBook;
 
 /**
@@ -15,28 +17,24 @@ public class InitSystem {
 
     public static void main(String args[]) {
 
-//        InsertData insertaDta = new InsertData();
-//        insertaDta.insertData();
+        Connection con = new Connection();
+        con.setCon();
+        con.closeCon();
 
-//        Connection con = new Connection();
-//        con.setCon();
-//        con.closeCon();
-        
+        InsertData insertaDta = new InsertData();
+        insertaDta.insertData();
+
+        TestInsertBook insertBook = new TestInsertBook();
+        insertBook.testMethod();
+
 //        TestRemoveMovie10 trmbooks10 = new TestRemoveMovie10();
 //        trmbooks10.testMethod();
-
 //        TestInsertBook tib = new TestInsertBook(); 
 //        tib.testMethod();
-
 //        TestInsertMovie10 movie10 = new TestInsertMovie10();
 //        movie10.testMethod();
-
 //           TesteUpdateMovie tup = new TesteUpdateMovie();
 //           tup.testMethod();
-
-        TestInsertBook book10 = new TestInsertBook();
-        book10.testMethod();
-
 //        TestRemoveMovie10 trmmovie = new TestRemoveMovie10();
 //        trmmovie.testMethod();
     }
