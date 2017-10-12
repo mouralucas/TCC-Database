@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package t_update;
 
 import Conn.Connection;
@@ -22,14 +17,14 @@ import t_files.OpenTestFiles;
  *
  * @author lucas
  */
-public class TesteUpdateMovie extends AbstractJavaSamplerClient implements Serializable {
+public class TesteUpdateMovie100 extends AbstractJavaSamplerClient implements Serializable {
 
     OpenTestFiles openTestFiles = new OpenTestFiles();
     MoviesDBM moviesDBM = new MoviesDBM();
     Random r = new Random();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-    private final int testSize = 10;
+    private final int testSize = 100;
 
     Movies movies;
     List<Movies> allMovies;
@@ -40,33 +35,26 @@ public class TesteUpdateMovie extends AbstractJavaSamplerClient implements Seria
     @Override
     public SampleResult runTest(JavaSamplerContext jsc) {
         SampleResult result = new SampleResult();
+        updates = openTestFiles.open("update\\updateMovies", testSize);
 
-    
-        return result;
-    }
-
-    public void testMethod() {
-        SampleResult result = new SampleResult();
-        updates = openTestFiles.open("update\\updateMovies", 1000);
-        
         Connection con = new Connection();
         con.setCon();
-        
+
         allMovies = moviesDBM.retrieveAllMovies(con);
 
         //pega a quantidade necessária de movies para o teste
         for (int i = 0; i < testSize; i++) {
-            moviesToBeUpdated.add(allMovies.get(rand(0, allMovies.size()-1)));
+            moviesToBeUpdated.add(allMovies.get(rand(0, allMovies.size() - 1)));
         }
 
         //modifica os valores de alguns campos 
         moviesToBeUpdated.forEach((iterator) -> {
-            int pos = rand(0, updates.size()-1);
+            int pos = rand(0, updates.size() - 1);
             iterator.setMovieTitle(updates.get(pos)[0]);
             iterator.setMovieSubTitle(updates.get(pos)[1]);
             iterator.setMovieSynopsis(updates.get(pos)[2]);
         });
-        
+
         //grava os novos valores no banco
         result.sampleStart();
         con.getCon().getTransaction().begin();
@@ -76,7 +64,45 @@ public class TesteUpdateMovie extends AbstractJavaSamplerClient implements Seria
         con.getCon().getTransaction().commit();
         result.sampleEnd();
         con.closeCon();
-        
+
+        System.out.println("\n\nTempo de execução do teste: " + result.getTime());
+        result.setSuccessful(true);
+
+        return result;
+    }
+
+    public void testMethod() {
+        SampleResult result = new SampleResult();
+        updates = openTestFiles.open("update\\updateMovies", 1000);
+
+        Connection con = new Connection();
+        con.setCon();
+
+        allMovies = moviesDBM.retrieveAllMovies(con);
+
+        //pega a quantidade necessária de movies para o teste
+        for (int i = 0; i < testSize; i++) {
+            moviesToBeUpdated.add(allMovies.get(rand(0, allMovies.size() - 1)));
+        }
+
+        //modifica os valores de alguns campos 
+        moviesToBeUpdated.forEach((iterator) -> {
+            int pos = rand(0, updates.size() - 1);
+            iterator.setMovieTitle(updates.get(pos)[0]);
+            iterator.setMovieSubTitle(updates.get(pos)[1]);
+            iterator.setMovieSynopsis(updates.get(pos)[2]);
+        });
+
+        //grava os novos valores no banco
+        result.sampleStart();
+        con.getCon().getTransaction().begin();
+        moviesToBeUpdated.forEach((iterator) -> {
+            moviesDBM.insertMovie(iterator, con);
+        });
+        con.getCon().getTransaction().commit();
+        result.sampleEnd();
+        con.closeCon();
+
         System.out.println("\n\nTempo de execução do teste: " + result.getTime());
         result.setSuccessful(true);
 

@@ -1,8 +1,6 @@
 package newLibrary_v7;
 
-import Conn.Connection;
-import preInsertions.InsertData;
-import t_Inserts.TestInsertBook;
+import t_Inserts.TestInsertMovie100;
 
 /**
  * @author Jociane Franzoni de Lima
@@ -17,22 +15,25 @@ public class InitSystem {
 
     public static void main(String args[]) {
 
-        Connection con = new Connection();
-        con.setCon();
-        con.closeCon();
-
-        InsertData insertaDta = new InsertData();
-        insertaDta.insertData();
-
-        TestInsertBook insertBook = new TestInsertBook();
-        insertBook.testMethod();
+//        Connection con = new Connection();
+//        con.setCon();
+//        con.closeCon();
+//
+//        InsertData insertaDta = new InsertData();
+//        insertaDta.insertData();
+//
+//        TestInsertBook insertBook = new TestInsertBook();
+//        insertBook.testMethod();
 
 //        TestRemoveMovie10 trmbooks10 = new TestRemoveMovie10();
 //        trmbooks10.testMethod();
+
 //        TestInsertBook tib = new TestInsertBook(); 
 //        tib.testMethod();
-//        TestInsertMovie10 movie10 = new TestInsertMovie10();
-//        movie10.testMethod();
+
+        TestInsertMovie100 movie = new TestInsertMovie100();
+        movie.testMethod();
+
 //           TesteUpdateMovie tup = new TesteUpdateMovie();
 //           tup.testMethod();
 //        TestRemoveMovie10 trmmovie = new TestRemoveMovie10();

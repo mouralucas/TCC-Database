@@ -47,7 +47,7 @@ public class TestInsertMovie100 extends AbstractJavaSamplerClient implements Ser
     OpenTestFiles openTestFiles = new OpenTestFiles();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-    private final int testSize = 100;
+    private final int testSize = 1000;//mudado para inserir para teste de update
 
     Movies movies;
 
