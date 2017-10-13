@@ -22,7 +22,7 @@ public class Connection {
     public boolean setCon() {
         Persistence p = new Persistence();
         if (factory == null || em == null) {
-            factory = p.createEntityManagerFactory("mongo_PU");
+            factory = p.createEntityManagerFactory("mysql_PU");
             em = factory.createEntityManager();
             return true;
         }

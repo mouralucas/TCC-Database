@@ -1,6 +1,9 @@
 package newLibrary_v7;
 
+import preInsertions.InsertData;
+import t_Inserts.TestInsertBook;
 import t_Inserts.TestInsertMovie100;
+import t_update.TesteUpdateMovie10;
 
 /**
  * @author Jociane Franzoni de Lima
@@ -21,17 +24,20 @@ public class InitSystem {
 //
 //        InsertData insertaDta = new InsertData();
 //        insertaDta.insertData();
-//
 //        TestInsertBook insertBook = new TestInsertBook();
 //        insertBook.testMethod();
 //        TestRemoveMovie10 trmbooks10 = new TestRemoveMovie10();
 //        trmbooks10.testMethod();
 //        TestInsertBook tib = new TestInsertBook(); 
 //        tib.testMethod();
-        for (int i = 0; i < 47; i++) {
-            TestInsertMovie100 movie = new TestInsertMovie100();
-            movie.testMethod();
-        }
+//        for (int i = 0; i < 50; i++) {
+//            System.out.println("Insert: " + i);
+//            TestInsertMovie100 movie = new TestInsertMovie100();
+//            movie.testMethod();
+//        }
+
+//        TesteUpdateMovie10 tum = new TesteUpdateMovie10();
+//        tum.testMethod();
 
 //           TesteUpdateMovie tup = new TesteUpdateMovie();
 //           tup.testMethod();
