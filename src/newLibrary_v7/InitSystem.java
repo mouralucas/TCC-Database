@@ -24,15 +24,14 @@ public class InitSystem {
 //
 //        TestInsertBook insertBook = new TestInsertBook();
 //        insertBook.testMethod();
-
 //        TestRemoveMovie10 trmbooks10 = new TestRemoveMovie10();
 //        trmbooks10.testMethod();
-
 //        TestInsertBook tib = new TestInsertBook(); 
 //        tib.testMethod();
-
-        TestInsertMovie100 movie = new TestInsertMovie100();
-        movie.testMethod();
+        for (int i = 0; i < 47; i++) {
+            TestInsertMovie100 movie = new TestInsertMovie100();
+            movie.testMethod();
+        }
 
 //           TesteUpdateMovie tup = new TesteUpdateMovie();
 //           tup.testMethod();
