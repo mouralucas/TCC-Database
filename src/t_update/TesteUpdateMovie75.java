@@ -46,13 +46,15 @@ public class TesteUpdateMovie75 extends AbstractJavaSamplerClient implements Ser
         Connection con = new Connection();
         con.setCon();
 
-        allMovies = moviesDBM.retrieveAllMovies(con);
+        //busca a quantidade necessário para o teste a partir de um id aleatório
+        int retrieve = rand(0, 54000 - 300);
+        allMovies = moviesDBM.retrieveSomeMovies(con, retrieve, retrieve + testSize + 1);
 
         System.out.println("\n\nTodos os dados buscados, iniciando Teste\n\n");
 
         //pega a quantidade necessária de movies para o teste
         for (int i = 0; i < testSize; i++) {
-            moviesToBeUpdated.add(allMovies.get(rand(0, allMovies.size() - 1)));
+            moviesToBeUpdated.add(allMovies.get(i));
         }
 
         //modifica os valores de alguns campos 

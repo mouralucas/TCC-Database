@@ -46,13 +46,15 @@ public class TesteUpdateMovie10 extends AbstractJavaSamplerClient implements Ser
         Connection con = new Connection();
         con.setCon();
 
-        allMovies = moviesDBM.retrieveAllMovies(con);
+        //busca a quantidade necessário para o teste a partir de um id aleatório
+        int retrieve = rand(0, 54000 - 300);
+        allMovies = moviesDBM.retrieveSomeMovies(con, retrieve, retrieve + testSize + 1);
 
         System.out.println("\n\nTodos os dados buscados, iniciando Teste\n\n");
 
         //pega a quantidade necessária de movies para o teste
         for (int i = 0; i < testSize; i++) {
-            moviesToBeUpdated.add(allMovies.get(rand(0, allMovies.size() - 1)));
+            moviesToBeUpdated.add(allMovies.get(i));
         }
 
         //modifica os valores de alguns campos 
@@ -81,6 +83,56 @@ public class TesteUpdateMovie10 extends AbstractJavaSamplerClient implements Ser
         updates.clear();
 
         return result;
+    }
+
+    public void testMethod() {
+        SampleResult result = new SampleResult();
+
+        updates = openTestFiles.open("update\\updateMovies", 50000);
+
+        Connection con = new Connection();
+        con.setCon();
+
+        int retrieve = rand(0, 54000 - 300);
+
+        result.sampleStart();
+        allMovies = moviesDBM.retrieveSomeMovies(con, retrieve, retrieve + testSize + 1);
+        result.sampleEnd();
+
+        allMovies.forEach((iteratir) -> {
+            System.out.println(iteratir.getMovie_id());
+        });
+
+        System.out.println("\n\nTodos os dados buscados, iniciando Teste\n\n");
+
+        //pega a quantidade necessária de movies para o teste
+        for (int i = 0; i < testSize; i++) {
+            moviesToBeUpdated.add(allMovies.get(i));
+        }
+
+        //modifica os valores de alguns campos 
+        moviesToBeUpdated.forEach((iterator) -> {
+            int pos = rand(0, updates.size() - 1);
+            iterator.setMovieTitle(updates.get(pos)[0]);
+            iterator.setMovieSubTitle(updates.get(pos)[1]);
+            iterator.setMovieSynopsis(updates.get(pos)[2]);
+        });
+
+        //grava os novos valores no banco
+        con.getCon().getTransaction().begin();
+        moviesToBeUpdated.forEach((iterator) -> {
+            moviesDBM.insertMovie(iterator, con);
+        });
+        con.getCon().getTransaction().commit();
+
+        con.closeCon();
+
+        System.out.println("\n\nTempo de execução do teste: " + result.getTime());
+        result.setSuccessful(true);
+
+        allMovies.clear();
+        moviesToBeUpdated.clear();
+        updates.clear();
     }
 
     public int rand(int minimo, int maximo) {

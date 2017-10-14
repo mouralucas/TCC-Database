@@ -1,8 +1,5 @@
 package newLibrary_v7;
 
-import preInsertions.InsertData;
-import t_Inserts.TestInsertBook;
-import t_Inserts.TestInsertMovie100;
 import t_update.TesteUpdateMovie10;
 
 /**
@@ -30,14 +27,15 @@ public class InitSystem {
 //        trmbooks10.testMethod();
 //        TestInsertBook tib = new TestInsertBook(); 
 //        tib.testMethod();
-//        for (int i = 0; i < 50; i++) {
+
+//        for (int i = 0; i < 5; i++) {
 //            System.out.println("Insert: " + i);
 //            TestInsertMovie100 movie = new TestInsertMovie100();
 //            movie.testMethod();
 //        }
 
-//        TesteUpdateMovie10 tum = new TesteUpdateMovie10();
-//        tum.testMethod();
+        TesteUpdateMovie10 tum = new TesteUpdateMovie10();
+        tum.testMethod();
 
 //           TesteUpdateMovie tup = new TesteUpdateMovie();
 //           tup.testMethod();

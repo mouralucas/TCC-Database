@@ -32,6 +32,16 @@ public class MoviesDBM {
                 + "ORDER BY m.movieTitle").getResultList();
     }
 
+//    public List retrieveSomeMovies(Connection con, int qtdMovies, int min, int max){
+//        return con.getCon().createQuery("SELECT m FROM Movies m WHERE m.movie_id > :min AND m.movie_id < :max")
+//                .setParameter("min", min).setParameter("max", max).getResultList();
+//    }
+    
+    public List retrieveSomeMovies(Connection con, int randonId, int ops) {
+        return con.getCon().createQuery("SELECT m FROM Movies m WHERE m.movie_id > :randonId AND m.movie_id < :ops")
+                .setParameter("randonId", randonId).setParameter("ops", ops).getResultList();
+    }
+
     public List retrieveMovieByTitle(String movieTitle, Connection con) {
         return con.getCon().createQuery("SELECT m FROM Movies m "
                 + "WHERE m.movieTitle LIKE CONCAT('%',:movieTitle,'%')")
