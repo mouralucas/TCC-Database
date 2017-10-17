@@ -19,7 +19,6 @@ import entities.Languages;
 import entities.Movies;
 import entities.Networks;
 import entities.Writers;
-import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -28,8 +27,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient;
-import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
 import org.apache.jmeter.samplers.SampleResult;
 import t_files.OpenTestFiles;
 
@@ -42,12 +39,12 @@ import t_files.OpenTestFiles;
  * ------------- Universidade Tecnológica Federal do Paraná ---------------
  *
  */
-public class TestInsertMovie100 extends AbstractJavaSamplerClient implements Serializable {
+public class TestInsertMovie55000 {
 
     OpenTestFiles openTestFiles = new OpenTestFiles();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-    private final int testSize = 100;//mudado para inserir para teste de update
+    private final int testSize = 55000;//mudado para inserir para teste de update
 
     Movies movies;
 
@@ -76,103 +73,7 @@ public class TestInsertMovie100 extends AbstractJavaSamplerClient implements Ser
 
     List<String[]> inserts = new ArrayList<>();
 
-    @Override
-    public SampleResult runTest(JavaSamplerContext jsc) {
-        SampleResult result = new SampleResult();
-        inserts = openTestFiles.open("insert\\insertMovies", testSize);
-
-        Connection con = new Connection();
-        con.setCon();
-
-        List<Directors> listDirectors = ddbm.retrieveAllDirectors(con);
-        List<Countries> listCountries = cdbm.retrieveAllCountries(con);
-        List<Languages> listLanguages = ldbm.retrieveAllLanguages(con);
-        List<Writers> listWrites = wdbm.retrieveAllWriters(con);
-        List<Genres> listGenrres = gdbm.retrieveAllGenres(con);
-        List<Actors> listActors = acdbm.retrieveAllActors(con);
-        List<Networks> listNetworks = ndbm.retrieveAllNetwork(con);
-        List<Books> listBooks = bkdbm.retrieveAllBooks(con);
-
-        inserts.forEach((iteration) -> {
-
-            listDirectors.forEach((i) -> {
-                if (iteration[5].equals(i.getDirectorName())) {
-                    director = i;
-                }
-            });
-
-            listCountries.forEach((i) -> {
-                if (iteration[6].equals(i.getCountryName())) {
-                    country = i;
-                }
-            });
-
-            listLanguages.forEach((i) -> {
-                if (iteration[7].equals(i.getLanguageName())) {
-                    language = i;
-                }
-            });
-
-            listWrites.forEach((i) -> {
-                if (iteration[8].equals(i.getWriterName())) {
-                    writers.add(i);
-                }
-            });
-
-            listGenrres.forEach((i) -> {
-                if (iteration[9].equals(i.getGenreName())) {
-                    genres.add(i);
-                }
-            });
-
-            listActors.forEach((i) -> {
-                if (iteration[10].equals(i.getActorName())) {
-                    actors.add(i);
-                }
-            });
-
-            listNetworks.forEach((i) -> {
-                if (iteration[11].equals(i.getNetworkName())) {
-                    networks.add(i);
-                }
-            });
-
-            books.add(listBooks.get(r.nextInt(listBooks.size())));
-            
-            try {
-                movies = new Movies(iteration[0], iteration[1], (Date) dateFormat.parse(iteration[2]),
-                        Integer.parseInt(iteration[3]), iteration[4], director, country, language, writers,
-                        genres, actors, networks, books);
-            } catch (ParseException ex) {
-                Logger.getLogger(TestInsertMovie100.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            moviesToBeInserted.add(movies);
-
-            writers.clear();
-            genres.clear();
-            actors.clear();
-            networks.clear();
-            books.clear();
-
-        });
-
-        result.sampleStart();
-        con.getCon().getTransaction().begin();
-
-        moviesToBeInserted.forEach((Movies iterator) -> {
-            mdbm.insertMovie(iterator, con);
-        });
-        
-        con.getCon().getTransaction().commit();
-        con.closeCon();
-        result.sampleEnd();
-
-        System.out.println("\n\nTempo de execução do teste: " + result.getTime());
-        result.setSuccessful(true);
-
-        return result;
-    }
+    int i = 1;
 
     //This method is only for local test, is exactly the same as runTest
     public void testMethod() {
@@ -195,46 +96,50 @@ public class TestInsertMovie100 extends AbstractJavaSamplerClient implements Ser
         con.getCon().getTransaction().begin();
         con.getCon().flush();
         con.getCon().clear();
+        
+        System.out.println("Tamanho Inserts: " + inserts.size());
+        System.out.println("");
+        
         inserts.forEach((iteration) -> {
 
             listDirectors.forEach((i) -> {
-                if (iteration[5].equals(i.getDirectorName())) {
+                if (iteration[6].equals(i.getDirectorName())) {
                     director = i;
                 }
             });
 
             listCountries.forEach((i) -> {
-                if (iteration[6].equals(i.getCountryName())) {
+                if (iteration[7].equals(i.getCountryName())) {
                     country = i;
                 }
             });
 
             listLanguages.forEach((i) -> {
-                if (iteration[7].equals(i.getLanguageName())) {
+                if (iteration[8].equals(i.getLanguageName())) {
                     language = i;
                 }
             });
 
             listWrites.forEach((i) -> {
-                if (iteration[8].equals(i.getWriterName())) {
+                if (iteration[9].equals(i.getWriterName())) {
                     writers.add(i);
                 }
             });
 
             listGenrres.forEach((i) -> {
-                if (iteration[9].equals(i.getGenreName())) {
+                if (iteration[10].equals(i.getGenreName())) {
                     genres.add(i);
                 }
             });
 
             listActors.forEach((i) -> {
-                if (iteration[10].equals(i.getActorName())) {
+                if (iteration[11].equals(i.getActorName())) {
                     actors.add(i);
                 }
             });
 
             listNetworks.forEach((i) -> {
-                if (iteration[11].equals(i.getNetworkName())) {
+                if (iteration[12].equals(i.getNetworkName())) {
                     networks.add(i);
                 }
             });
@@ -242,11 +147,12 @@ public class TestInsertMovie100 extends AbstractJavaSamplerClient implements Ser
             books.add(listBooks.get(r.nextInt(listBooks.size())));
 
             try {
-                movies = new Movies(iteration[0], iteration[1], (Date) dateFormat.parse(iteration[2]),
-                        Integer.parseInt(iteration[3]), iteration[4], director, country, language, writers,
+                movies = new Movies(Integer.parseInt(iteration[0]), iteration[1], iteration[2], (Date) dateFormat.parse(iteration[3]),
+                        Integer.parseInt(iteration[4]), iteration[5], director, country, language, writers,
                         genres, actors, networks, books);
+                
             } catch (ParseException ex) {
-                Logger.getLogger(TestInsertMovie100.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(TestInsertMovie55000.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             mdbm.insertMovie(movies, con);
@@ -256,6 +162,9 @@ public class TestInsertMovie100 extends AbstractJavaSamplerClient implements Ser
             actors.clear();
             networks.clear();
             books.clear();
+            
+            System.out.println("Insert nº: " + i);
+            i++;
 
         });
         con.getCon().getTransaction().commit();

@@ -94,9 +94,11 @@ public class TesteUpdateMovie10 extends AbstractJavaSamplerClient implements Ser
         con.setCon();
 
         int retrieve = rand(0, 54000 - 300);
+        int valor = 1;
 
         result.sampleStart();
-        allMovies = moviesDBM.retrieveSomeMovies(con, retrieve, retrieve + testSize + 1);
+//        allMovies = moviesDBM.retrieveSomeMovies(con, retrieve, retrieve + testSize + 1);
+        allMovies = moviesDBM.retrieveSomeMovies(con, valor, valor + testSize + 1);
         result.sampleEnd();
 
         allMovies.forEach((iteratir) -> {

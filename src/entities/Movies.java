@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -23,12 +22,11 @@ import javax.persistence.TemporalType;
  * ------------- Universidade Tecnológica Federal do Paraná ---------------
  *
  */
-
 @Entity
 public class Movies implements Serializable {
 
     @Id
-    @GeneratedValue
+    //@GeneratedValue //comentar essa linha para inserção de movies para os testes de update (necessita que o id comece em 1, no mongo ele não conta certo)
     private int movie_id;
     private String movieTitle;
     private String movieSubTitle;
@@ -98,6 +96,27 @@ public class Movies implements Serializable {
             List<Writers> movieWriters, List<Genres> movieGenres, List<Actors> movieActors, List<Networks> movieNetworks,
             List<Books> movieBooks) {
 
+        this.movieTitle = movieTitle;
+        this.movieSubTitle = movieSubTitle;
+        this.movieReleaseDate = movieReleaseDate;
+        this.movieLenght = movieLenght;
+        this.movieSynopsis = movieSynopsis;
+        this.movieDirector = movieDirector; //-> precisa de vetor
+        this.movieCountry = movieCountry; //-> precisa de vetor
+        this.movieLanguage = movieLanguage; //-> precisa de vetor
+        this.movieWriters = movieWriters; //-> precisa de vetor
+        this.movieGenres = movieGenres; //-> precisa de vetor
+        this.movieActors = movieActors; //-> precisa de vetor
+        this.movieNetworks = movieNetworks; //-> precisa de vetor
+        this.movieBooks = movieBooks; //-> precisa de vetor
+    }
+
+    public Movies(int id, String movieTitle, String movieSubTitle, Date movieReleaseDate, int movieLenght,
+            String movieSynopsis, Directors movieDirector, Countries movieCountry, Languages movieLanguage,
+            List<Writers> movieWriters, List<Genres> movieGenres, List<Actors> movieActors, List<Networks> movieNetworks,
+            List<Books> movieBooks) {
+
+        this.movie_id = id;
         this.movieTitle = movieTitle;
         this.movieSubTitle = movieSubTitle;
         this.movieReleaseDate = movieReleaseDate;
