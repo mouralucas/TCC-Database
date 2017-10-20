@@ -44,7 +44,7 @@ public class TestInsertMovie55000 {
     OpenTestFiles openTestFiles = new OpenTestFiles();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-    private final int testSize = 55000;//mudado para inserir para teste de update
+    private final int testSize = 1;//mudado para inserir para teste de update
 
     Movies movies;
 
@@ -96,12 +96,11 @@ public class TestInsertMovie55000 {
         con.getCon().getTransaction().begin();
         con.getCon().flush();
         con.getCon().clear();
-        
+
         System.out.println("Tamanho Inserts: " + inserts.size());
         System.out.println("");
-        
-        inserts.forEach((iteration) -> {
 
+        inserts.forEach((iteration) -> {
             listDirectors.forEach((i) -> {
                 if (iteration[6].equals(i.getDirectorName())) {
                     director = i;
@@ -150,7 +149,7 @@ public class TestInsertMovie55000 {
                 movies = new Movies(Integer.parseInt(iteration[0]), iteration[1], iteration[2], (Date) dateFormat.parse(iteration[3]),
                         Integer.parseInt(iteration[4]), iteration[5], director, country, language, writers,
                         genres, actors, networks, books);
-                
+
             } catch (ParseException ex) {
                 Logger.getLogger(TestInsertMovie55000.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -162,7 +161,7 @@ public class TestInsertMovie55000 {
             actors.clear();
             networks.clear();
             books.clear();
-            
+
             System.out.println("Insert nº: " + i);
             i++;
 

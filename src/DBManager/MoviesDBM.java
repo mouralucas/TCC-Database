@@ -36,7 +36,6 @@ public class MoviesDBM {
 //        return con.getCon().createQuery("SELECT m FROM Movies m WHERE m.movie_id > :min AND m.movie_id < :max")
 //                .setParameter("min", min).setParameter("max", max).getResultList();
 //    }
-    
     public List retrieveSomeMovies(Connection con, int randonId, int ops) {
         return con.getCon().createQuery("SELECT m FROM Movies m WHERE m.movie_id > :randonId AND m.movie_id < :ops")
                 .setParameter("randonId", randonId).setParameter("ops", ops).getResultList();
@@ -48,8 +47,8 @@ public class MoviesDBM {
                 .setParameter("movieTitle", movieTitle).getResultList();
     }
 
-    public List retrieveMovieByMultipleValues(String title, String director, String writer, String actor, String network, String book,
-            Connection con) {
+    public List retrieveMovieByMultipleValues(String title, String director,
+            String writer, String actor, String network, String book, Connection con) {
         return con.getCon().createQuery("SELECT "
                 + "m.movieTitle, m.movieLenght, a.actorName, d.directorName, w.writerName, n.networkName, b.bookTitle "
                 + "FROM Movies m "

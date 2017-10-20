@@ -111,9 +111,19 @@ public class Movies implements Serializable {
         this.movieBooks = movieBooks; //-> precisa de vetor
     }
 
-    public Movies(int id, String movieTitle, String movieSubTitle, Date movieReleaseDate, int movieLenght,
-            String movieSynopsis, Directors movieDirector, Countries movieCountry, Languages movieLanguage,
-            List<Writers> movieWriters, List<Genres> movieGenres, List<Actors> movieActors, List<Networks> movieNetworks,
+    public Movies(int id, 
+            String movieTitle, 
+            String movieSubTitle, 
+            Date movieReleaseDate, 
+            int movieLenght,
+            String movieSynopsis, 
+            Directors movieDirector, 
+            Countries movieCountry, 
+            Languages movieLanguage,
+            List<Writers> movieWriters, 
+            List<Genres> movieGenres, 
+            List<Actors> movieActors,
+            List<Networks> movieNetworks,
             List<Books> movieBooks) {
 
         this.movie_id = id;

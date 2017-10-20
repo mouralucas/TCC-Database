@@ -1,6 +1,6 @@
 package newLibrary_v7;
 
-import t_update.TesteUpdateMovie10;
+import t_retrieve.TestRetrieveBookByAuthorByLanguage10;
 
 /**
  * @author Jociane Franzoni de Lima
@@ -18,27 +18,17 @@ public class InitSystem {
 //        Connection con = new Connection();
 //        con.setCon();
 //        con.closeCon();
-////
+//
 //        InsertData insertaDta = new InsertData();
 //        insertaDta.insertData();
 //
 //        TestInsertBook insertBook = new TestInsertBook();
 //        insertBook.testMethod();
 
-//        TestRemoveMovie10 trmbooks10 = new TestRemoveMovie10();
-//        trmbooks10.testMethod();
-//        TestInsertBook tib = new TestInsertBook(); 
-//        tib.testMethod();
-
 //        TestInsertMovie55000 movie = new TestInsertMovie55000();
 //        movie.testMethod();
-
-        TesteUpdateMovie10 tum = new TesteUpdateMovie10();
-        tum.testMethod();
         
-//           TesteUpdateMovie tup = new TesteUpdateMovie();
-//           tup.testMethod();
-//        TestRemoveMovie10 trmmovie = new TestRemoveMovie10();
-//        trmmovie.testMethod();
+            TestRetrieveBookByAuthorByLanguage10 trm = new TestRetrieveBookByAuthorByLanguage10();
+            trm.retrieve();
     }
 }
