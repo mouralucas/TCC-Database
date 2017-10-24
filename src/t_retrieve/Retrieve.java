@@ -13,7 +13,7 @@ import java.util.List;
  *
  * @author lucas
  */
-public class TestRetrieveBookByAuthorByLanguage10 {
+public class Retrieve {
 
     public void retrieve() {
         Connection con = new Connection();
@@ -22,9 +22,9 @@ public class TestRetrieveBookByAuthorByLanguage10 {
         
         List<Object> retorno;
         
-        con.getCon().getTransaction().begin();
-        retorno = mdbm.retrieveMovieByMultipleValues("inceptos suspendisse","piroca","","","","", con);
-        con.getCon().getTransaction().commit();
+        retorno = mdbm.retrieveTeste("inceptos suspendisse","piroca","anal","","","", con);
+
+        con.closeCon();
         
         System.out.println("Tamanho da piroca: " + retorno.size());
         System.out.println("");

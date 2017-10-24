@@ -50,12 +50,34 @@ public class MoviesDBM {
     public List retrieveMovieByMultipleValues(String movieTitle, String director,
             String writer, String actor, String network, String book, Connection con) {
 
-        return con.getCon().createQuery("SELECT m.movieTitle, d.directorName FROM Movies m "
+        return con.getCon().createQuery(
+                "SELECT m.movieTitle, "
+                + "d.directorName "
+                + "FROM Movies m "
                 + "LEFT JOIN m.movieDirector d "
                 + "WHERE m.movieTitle LIKE CONCAT('%',:movieTitle,'%') AND "
                 + "d.directorName LIKE CONCAT('%',:director,'%') ")
                 .setParameter("movieTitle", movieTitle)
                 .setParameter("director", director)
+                .getResultList();
+    }
+
+    public List retrieveTeste(String movieTitle, String director,
+            String writer, String actor, String network, String book, Connection con) {
+
+        return con.getCon().createQuery(
+                "SELECT m.movieTitle, "
+                + "d.directorName, "
+                + "w.writerName "
+                + "FROM Movies m "
+                + "LEFT JOIN m.movieDirector d "
+                + "LEFT JOIN m.movieWriters w "
+                + "WHERE m.movieTitle LIKE CONCAT('%',:movieTitle,'%') OR "
+                + "d.directorName LIKE CONCAT('%',:director,'%') OR "
+                + "w.writerName LIKE CONCAT('%',:writer,'%')")
+                .setParameter("movieTitle", movieTitle)
+                .setParameter("director", director)
+                .setParameter("writer", writer)
                 .getResultList();
     }
 

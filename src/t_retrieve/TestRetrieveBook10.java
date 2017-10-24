@@ -7,11 +7,8 @@ package t_retrieve;
 
 import Conn.Connection;
 import DBManager.BooksDBM;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.jmeter.protocol.java.sampler.AbstractJavaSamplerClient;
-import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;
 import org.apache.jmeter.samplers.SampleResult;
 import t_files.OpenTestFiles;
 
@@ -19,7 +16,7 @@ import t_files.OpenTestFiles;
  *
  * @author lucas
  */
-public class TestRetrieveBook10 extends AbstractJavaSamplerClient implements Serializable {
+public class TestRetrieveBook10 {
 
     OpenTestFiles openTestFiles = new OpenTestFiles();
     BooksDBM booksDBM = new BooksDBM();
@@ -28,12 +25,6 @@ public class TestRetrieveBook10 extends AbstractJavaSamplerClient implements Ser
     List<String[]> inserts = new ArrayList<>();
 
     private final int testSize = 10;
-
-    @Override
-    public SampleResult runTest(JavaSamplerContext jsc) {
-        SampleResult result = new SampleResult();
-        return result;
-    }
 
     //isbn
     //title

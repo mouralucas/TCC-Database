@@ -16,7 +16,7 @@ import t_files.OpenTestFiles;
  *
  * @author lucas
  */
-public class TestRetrieveMovie10 extends AbstractJavaSamplerClient implements Serializable {
+public class TestRetrieveMovie100 extends AbstractJavaSamplerClient implements Serializable {
 
     OpenTestFiles openTestFiles = new OpenTestFiles();
     MoviesDBM moviesDBM = new MoviesDBM();
@@ -27,7 +27,7 @@ public class TestRetrieveMovie10 extends AbstractJavaSamplerClient implements Se
     private List<String[]> retrieveInfo = new ArrayList<>();
     private List<String[]> dbData = new ArrayList<>();
 
-    private final int testSize = 10;
+    private final int testSize = 100;
 
     @Override
     public SampleResult runTest(JavaSamplerContext jsc) {
