@@ -44,7 +44,7 @@ public class TestInsertMovie55000 {
     OpenTestFiles openTestFiles = new OpenTestFiles();
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-    private final int testSize = 1;//mudado para inserir para teste de update
+    private final int testSize = 55000;//mudado para inserir para teste de update
 
     Movies movies;
 
@@ -164,6 +164,12 @@ public class TestInsertMovie55000 {
 
             System.out.println("Insert nº: " + i);
             i++;
+
+            if (i % 100 == 0) {
+                System.out.printf("Commiting...");
+                con.getCon().getTransaction().commit();
+                con.getCon().getTransaction().begin();
+            }
 
         });
         con.getCon().getTransaction().commit();

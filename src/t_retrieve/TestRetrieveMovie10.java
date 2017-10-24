@@ -54,16 +54,15 @@ public class TestRetrieveMovie10 extends AbstractJavaSamplerClient implements Se
         con.setCon();
 
         result.sampleStart();
-        for(String[] iterator: retrieveInfo) {
-            Object mv;
-            m = moviesDBM.retrieveMovieByMultipleValues(iterator[1], iterator[6], iterator[9], iterator[11], iterator[12], iterator[13], con);
-            movies.add((Movies)m.get(0));
-        }
-        
-//        retrieveInfo.forEach((iterator) ->{
+//        for(String[] iterator: retrieveInfo) {
 //            m = moviesDBM.retrieveMovieByMultipleValues(iterator[1], iterator[6], iterator[9], iterator[11], iterator[12], iterator[13], con);
-//            movies.add((Movies)m);
-//        });
+//            movies.add((Movies)m.get(0));
+//        }
+        
+        retrieveInfo.forEach((iterator) ->{
+            m = moviesDBM.retrieveMovieByMultipleValues(iterator[1], iterator[6], iterator[9], iterator[11], iterator[12], iterator[13], con);
+            movies.add((Movies)m);
+        });
 
         result.sampleEnd();
         con.closeCon();

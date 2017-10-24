@@ -47,29 +47,15 @@ public class MoviesDBM {
                 .setParameter("movieTitle", movieTitle).getResultList();
     }
 
-    public List retrieveMovieByMultipleValues(String title, String director,
+    public List retrieveMovieByMultipleValues(String movieTitle, String director,
             String writer, String actor, String network, String book, Connection con) {
-        return con.getCon().createQuery("SELECT "
-                + "m.movieTitle, m.movieLenght, a.actorName, d.directorName, w.writerName, n.networkName, b.bookTitle "
-                + "FROM Movies m "
-                + "INNER JOIN m.movieActors a "
-                + "INNER JOIN m.movieDirector d "
-                + "INNER JOIN m.movieWriters w "
-                + "INNER JOIN m.movieNetworks n "
-                + "INNER JOIN m.movieBooks b "
-                + "WHERE "
-                + "m.movieTitle LIKE CONCAT('%',:movieTitle,'%') OR "
-                + "a.actorName LIKE CONCAT('%',:actorName,'%') OR "
-                + "d.directorName LIKE CONCAT('%',:directorName,'%') OR "
-                + "w.writerName LIKE CONCAT('%',:writerName,'%') OR "
-                + "n.networkName LIKE CONCAT('%',:networkName,'%') OR "
-                + "b.bookTitle LIKE CONCAT('%',:bookTitle,'%')")
-                .setParameter("movieTitle", title)
-                .setParameter("actorName", actor)
-                .setParameter("directorName", director)
-                .setParameter("writerName", writer)
-                .setParameter("networkName", network)
-                .setParameter("bookTitle", book)
+
+        return con.getCon().createQuery("SELECT m.movieTitle, d.directorName FROM Movies m "
+                + "LEFT JOIN m.movieDirector d "
+                + "WHERE m.movieTitle LIKE CONCAT('%',:movieTitle,'%') AND "
+                + "d.directorName LIKE CONCAT('%',:director,'%') ")
+                .setParameter("movieTitle", movieTitle)
+                .setParameter("director", director)
                 .getResultList();
     }
 

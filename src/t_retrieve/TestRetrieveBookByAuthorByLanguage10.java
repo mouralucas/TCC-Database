@@ -22,7 +22,9 @@ public class TestRetrieveBookByAuthorByLanguage10 {
         
         List<Object> retorno;
         
-        retorno = mdbm.retrieveMovieByMultipleValues("inceptos suspendisse","","","","","", con);
+        con.getCon().getTransaction().begin();
+        retorno = mdbm.retrieveMovieByMultipleValues("inceptos suspendisse","piroca","","","","", con);
+        con.getCon().getTransaction().commit();
         
         System.out.println("Tamanho da piroca: " + retorno.size());
         System.out.println("");
