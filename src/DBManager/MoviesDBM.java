@@ -47,7 +47,7 @@ public class MoviesDBM {
                 .setParameter("movieTitle", movieTitle).getResultList();
     }
 
-    public List retrieveMovieByMultipleValues(String movieTitle, String director,
+    public List retrieveOneJoin(String movieTitle, String director,
             String writer, String actor, String network, String book, Connection con) {
 
         return con.getCon().createQuery(
@@ -62,7 +62,7 @@ public class MoviesDBM {
                 .getResultList();
     }
 
-    public List retrieveTeste(String movieTitle, String director,
+    public List retrieveTwoJoins(String movieTitle, String director,
             String writer, String actor, String network, String book, Connection con) {
 
         return con.getCon().createQuery(
@@ -74,10 +74,33 @@ public class MoviesDBM {
                 + "LEFT JOIN m.movieWriters w "
                 + "WHERE m.movieTitle LIKE CONCAT('%',:movieTitle,'%') OR "
                 + "d.directorName LIKE CONCAT('%',:director,'%') OR "
-                + "w.writerName LIKE CONCAT('%',:writer,'%')")
+                + "w.writerName LIKE CONCAT('%',:writer,'%') ")
                 .setParameter("movieTitle", movieTitle)
                 .setParameter("director", director)
                 .setParameter("writer", writer)
+                .getResultList();
+    }
+
+    public List retrieveThreeJoins(String movieTitle, String director,
+            String writer, String actor, String network, String book, Connection con) {
+
+        return con.getCon().createQuery(
+                "SELECT m.movieTitle, "
+                + "d.directorName, "
+                + "w.writerName, "
+                + "a.actorName "
+                + "FROM Movies m "
+                + "LEFT JOIN m.movieDirector d "
+                + "LEFT JOIN m.movieWriters w "
+                + "LEFT JOIN m.movieActors a "
+                + "WHERE m.movieTitle LIKE CONCAT('%',:movieTitle,'%') OR "
+                + "d.directorName LIKE CONCAT('%',:director,'%') OR "
+                + "w.writerName LIKE CONCAT('%',:writer,'%') OR "
+                + "a.actorName LIKE CONCAT('%',:actor,'%')")
+                .setParameter("movieTitle", movieTitle)
+                .setParameter("director", director)
+                .setParameter("writer", writer)
+                .setParameter("actor", actor)
                 .getResultList();
     }
 

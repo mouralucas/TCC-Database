@@ -1,5 +1,6 @@
 package newLibrary_v7;
 
+import t_retrieve.Retrieve;
 import t_retrieve.TestRetrieveMovie10;
 
 /**
@@ -29,7 +30,7 @@ public class InitSystem {
 //        testeRetrieve trm = new testeRetrieve();
 //        trm.retrieve();
 
-        TestRetrieveMovie10 trm = new TestRetrieveMovie10();
-        trm.testMethod();
+       Retrieve r = new Retrieve();
+       r.testMethod();
     }
 }

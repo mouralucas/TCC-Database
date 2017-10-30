@@ -44,7 +44,7 @@ public class TestRetrieveMovie25 extends AbstractJavaSamplerClient implements Se
         result.sampleStart();
 
         retrieveInfo.forEach((iterator) -> {
-            m = moviesDBM.retrieveTeste(iterator[1], iterator[6], iterator[9], iterator[11], iterator[12], iterator[13], con);
+            m = moviesDBM.retrieveOneJoin(iterator[1], iterator[6], iterator[9], iterator[11], iterator[12], iterator[13], con);
             movies.add(m);
         });
 
@@ -76,7 +76,7 @@ public class TestRetrieveMovie25 extends AbstractJavaSamplerClient implements Se
         result.sampleStart();
 
         retrieveInfo.forEach((iterator) -> {
-            m = moviesDBM.retrieveTeste(iterator[1], iterator[6], iterator[9], iterator[11], iterator[12], iterator[13], con);
+            m = moviesDBM.retrieveThreeJoins(iterator[1], iterator[6], iterator[9], iterator[11], iterator[12], iterator[13], con);
             movies.add(m);
         });
 
