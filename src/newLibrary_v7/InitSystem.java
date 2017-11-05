@@ -1,7 +1,7 @@
 package newLibrary_v7;
 
-import t_retrieve.Retrieve;
-import t_retrieve.TestRetrieveMovie10;
+import t_retrieve_join.Retrieve;
+import t_retrieve_join.TestRetrieveMovie10;
 
 /**
  * @author Jociane Franzoni de Lima

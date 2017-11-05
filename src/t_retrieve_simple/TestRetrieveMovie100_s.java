@@ -1,5 +1,6 @@
-package t_retrieve;
+package t_retrieve_simple;
 
+import t_retrieve_join.*;
 import Conn.Connection;
 import DBManager.MoviesDBM;
 import entities.Movies;
@@ -16,7 +17,7 @@ import t_files.OpenTestFiles;
  *
  * @author lucas
  */
-public class TestRetrieveMovie50 extends AbstractJavaSamplerClient implements Serializable {
+public class TestRetrieveMovie100_s extends AbstractJavaSamplerClient implements Serializable {
 
     OpenTestFiles openTestFiles = new OpenTestFiles();
     MoviesDBM moviesDBM = new MoviesDBM();
@@ -27,13 +28,14 @@ public class TestRetrieveMovie50 extends AbstractJavaSamplerClient implements Se
     private List<String[]> retrieveInfo = new ArrayList<>();
     private List<String[]> dbData = new ArrayList<>();
 
-    private final int testSize = 50;
+    private final int testSize = 100;
 
     @Override
     public SampleResult runTest(JavaSamplerContext jsc) {
         SampleResult result = new SampleResult();
         dbData = openTestFiles.open("insert\\insertMovies", 55000);
 
+        retrieveInfo.clear();
         for (int i = 0; i < testSize; i++) {
             retrieveInfo.add(dbData.get(rand(0, dbData.size() - 1)));
         }
@@ -44,14 +46,14 @@ public class TestRetrieveMovie50 extends AbstractJavaSamplerClient implements Se
         result.sampleStart();
 
         retrieveInfo.forEach((iterator) -> {
-            m = moviesDBM.retrieveOneJoin(iterator[1], iterator[6], iterator[9], iterator[11], iterator[12], iterator[13], con);
+            m = moviesDBM.retrieveMovieByTitle(iterator[1], con);
             movies.add(m);
         });
 
         result.sampleEnd();
         con.closeCon();
 
-        System.out.printf("Tempo de execução do teste: %.3f minutos\n", (double)result.getTime() / 60000);
+        System.out.printf("Tempo de execução do teste: %.3f minutos\n", (double) result.getTime() / 60000);
         result.setSuccessful(true);
         return result;
     }
@@ -85,9 +87,9 @@ public class TestRetrieveMovie50 extends AbstractJavaSamplerClient implements Se
 
         System.out.println("Registros buscados: " + movies.size());
 
-        System.out.printf("\n\nTempo de execução do teste: %.3f mili-segundos\n", (double)result.getTime());
-        System.out.printf("Tempo de execução do teste: %.3f segundos\n", (double)result.getTime() / 1000);
-        System.out.printf("Tempo de execução do teste: %.3f minutos\n", (double)result.getTime() / 60000);
+        System.out.printf("\n\nTempo de execução do teste: %.3f mili-segundos\n", (double) result.getTime());
+        System.out.printf("Tempo de execução do teste: %.3f segundos\n", (double) result.getTime() / 1000);
+        System.out.printf("Tempo de execução do teste: %.3f minutos\n", (double) result.getTime() / 60000);
         result.setSuccessful(true);
     }
 

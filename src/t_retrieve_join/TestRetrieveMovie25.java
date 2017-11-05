@@ -1,4 +1,4 @@
-package t_retrieve;
+package t_retrieve_join;
 
 import Conn.Connection;
 import DBManager.MoviesDBM;
@@ -16,7 +16,7 @@ import t_files.OpenTestFiles;
  *
  * @author lucas
  */
-public class TestRetrieveMovie100 extends AbstractJavaSamplerClient implements Serializable {
+public class TestRetrieveMovie25 extends AbstractJavaSamplerClient implements Serializable {
 
     OpenTestFiles openTestFiles = new OpenTestFiles();
     MoviesDBM moviesDBM = new MoviesDBM();
@@ -27,13 +27,14 @@ public class TestRetrieveMovie100 extends AbstractJavaSamplerClient implements S
     private List<String[]> retrieveInfo = new ArrayList<>();
     private List<String[]> dbData = new ArrayList<>();
 
-    private final int testSize = 100;
+    private final int testSize = 25;
 
     @Override
     public SampleResult runTest(JavaSamplerContext jsc) {
         SampleResult result = new SampleResult();
         dbData = openTestFiles.open("insert\\insertMovies", 55000);
 
+        retrieveInfo.clear();
         for (int i = 0; i < testSize; i++) {
             retrieveInfo.add(dbData.get(rand(0, dbData.size() - 1)));
         }
@@ -66,6 +67,7 @@ public class TestRetrieveMovie100 extends AbstractJavaSamplerClient implements S
         SampleResult result = new SampleResult();
         dbData = openTestFiles.open("insert\\insertMovies", 55000);
 
+        retrieveInfo.clear();
         for (int i = 0; i < testSize; i++) {
             retrieveInfo.add(dbData.get(rand(0, dbData.size() - 1)));
         }

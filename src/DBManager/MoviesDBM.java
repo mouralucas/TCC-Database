@@ -104,6 +104,64 @@ public class MoviesDBM {
                 .getResultList();
     }
 
+    public List retrieveFourJoins(String movieTitle, String director,
+            String writer, String actor, String network, String book, Connection con) {
+
+        return con.getCon().createQuery(
+                "SELECT m.movieTitle, "
+                + "d.directorName, "
+                + "w.writerName, "
+                + "a.actorName, "
+                + "n.networkName "
+                + "FROM Movies m "
+                + "LEFT JOIN m.movieDirector d "
+                + "LEFT JOIN m.movieWriters w "
+                + "LEFT JOIN m.movieActors a "
+                + "LEFT JOIN m.movieNetworks n "
+                + "WHERE m.movieTitle LIKE CONCAT('%',:movieTitle,'%') OR "
+                + "d.directorName LIKE CONCAT('%',:director,'%') OR "
+                + "w.writerName LIKE CONCAT('%',:writer,'%') OR "
+                + "a.actorName LIKE CONCAT('%',:actor,'%') OR "
+                + "n.networkName LIKE CONCAT('%',:network,'%')")
+                .setParameter("movieTitle", movieTitle)
+                .setParameter("director", director)
+                .setParameter("writer", writer)
+                .setParameter("actor", actor)
+                .setParameter("network", network)
+                .getResultList();
+    }
+
+    public List retrieveFiveJoins(String movieTitle, String director,
+            String writer, String actor, String network, String book, Connection con) {
+
+        return con.getCon().createQuery(
+                "SELECT m.movieTitle, "
+                + "d.directorName, "
+                + "w.writerName, "
+                + "a.actorName, "
+                + "n.networkName, "
+                + "b.bookTitle "
+                + "FROM Movies m "
+                + "LEFT JOIN m.movieDirector d "
+                + "LEFT JOIN m.movieWriters w "
+                + "LEFT JOIN m.movieActors a "
+                + "LEFT JOIN m.movieNetworks n "
+                + "LEFT JOIN m.movieBooks b "
+                + "WHERE m.movieTitle LIKE CONCAT('%',:movieTitle,'%') OR "
+                + "d.directorName LIKE CONCAT('%',:director,'%') OR "
+                + "w.writerName LIKE CONCAT('%',:writer,'%') OR "
+                + "a.actorName LIKE CONCAT('%',:actor,'%') OR "
+                + "n.networkName LIKE CONCAT('%',:network,'%') OR "
+                + "b.bookTitle LIKE CONCAT('%',:book,'%')")
+                .setParameter("movieTitle", movieTitle)
+                .setParameter("director", director)
+                .setParameter("writer", writer)
+                .setParameter("actor", actor)
+                .setParameter("network", network)
+                .setParameter("book", book)
+                .getResultList();
+    }
+
     /*------------------------- Remove Movie Query --------------------------*/
     public void removeMovie(Movies movie, Connection con) {
         try {
