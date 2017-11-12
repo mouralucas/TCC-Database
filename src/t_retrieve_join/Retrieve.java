@@ -24,7 +24,7 @@ public class Retrieve {
     private List<String[]> retrieveInfo = new ArrayList<>();
     private List<String[]> dbData = new ArrayList<>();
 
-    private final int testSize = 100;
+    private final int testSize = 10;
 
     //title [1]
     //director [6]
@@ -57,42 +57,44 @@ public class Retrieve {
         });
         resultOneJoin.sampleEnd();
 
-        movies.clear();
-        System.out.println("2 Joins...");
-        resultTwoJoins.sampleStart();
-        retrieveInfo.forEach((iterator) -> {
-            m = moviesDBM.retrieveTwoJoins(iterator[1], iterator[6], iterator[9], iterator[11], iterator[12], iterator[13], con);
-            movies.add(m);
-        });
-        resultTwoJoins.sampleEnd();
+//        movies.clear();
+//        System.out.println("2 Joins...");
+//        resultTwoJoins.sampleStart();
+//        retrieveInfo.forEach((iterator) -> {
+//            m = moviesDBM.retrieveTwoJoins(iterator[1], iterator[6], iterator[9], iterator[11], iterator[12], iterator[13], con);
+//            movies.add(m);
+//        });
+//        resultTwoJoins.sampleEnd();
 
-        movies.clear();
-        System.out.println("3 Joins...");
-        resultThreeJoins.sampleStart();
-        retrieveInfo.forEach((iterator) -> {
-            m = moviesDBM.retrieveThreeJoins(iterator[1], iterator[6], iterator[9], iterator[11], iterator[12], iterator[13], con);
-            movies.add(m);
-        });
-        resultThreeJoins.sampleEnd();
+//        movies.clear();
+//        System.out.println("3 Joins...");
+//        resultThreeJoins.sampleStart();
+//        retrieveInfo.forEach((iterator) -> {
+//            m = moviesDBM.retrieveThreeJoins(iterator[1], iterator[6], iterator[9], iterator[11], iterator[12], iterator[13], con);
+//            movies.add(m);
+//        });
+//        resultThreeJoins.sampleEnd();
 
-        movies.clear();
-        System.out.println("4 Joins...");
-        resultFourJoins.sampleStart();
-        retrieveInfo.forEach((iterator) -> {
-            m = moviesDBM.retrieveFourJoins(iterator[1], iterator[6], iterator[9], iterator[11], iterator[12], iterator[13], con);
-            movies.add(m);
-        });
-        resultFourJoins.sampleEnd();
+//        movies.clear();
+//        System.out.println("4 Joins...");
+//        resultFourJoins.sampleStart();
+//        retrieveInfo.forEach((iterator) -> {
+//            m = moviesDBM.retrieveFourJoins(iterator[1], iterator[6], iterator[9], iterator[11], iterator[12], iterator[13], con);
+//            movies.add(m);
+//        });
+//        resultFourJoins.sampleEnd();
 
-        movies.clear();
-        System.out.println("5 Joins...");
-        resultFiveJoins.sampleStart();
-        retrieveInfo.forEach((iterator) -> {
-            m = moviesDBM.retrieveFiveJoins(iterator[1], iterator[6], iterator[9], iterator[11], iterator[12], iterator[13], con);
-            movies.add(m);
-        });
-        resultFiveJoins.sampleEnd();
+//        movies.clear();
+//        System.out.println("5 Joins...");
+//        resultFiveJoins.sampleStart();
+//        retrieveInfo.forEach((iterator) -> {
+//            m = moviesDBM.retrieveFiveJoins(iterator[1], iterator[6], iterator[9], iterator[11], iterator[12], iterator[13], con);
+//            movies.add(m);
+//        });
+//        resultFiveJoins.sampleEnd();
 
+        System.out.println("Tamanho de movies: " + movies.size());
+        
         con.closeCon();
 
         //System.out.println("Tamanho list: " + movies.size());
