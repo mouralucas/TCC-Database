@@ -57,14 +57,14 @@ public class Retrieve {
         });
         resultOneJoin.sampleEnd();
 
-//        movies.clear();
-//        System.out.println("2 Joins...");
-//        resultTwoJoins.sampleStart();
-//        retrieveInfo.forEach((iterator) -> {
-//            m = moviesDBM.retrieveTwoJoins(iterator[1], iterator[6], iterator[9], iterator[11], iterator[12], iterator[13], con);
-//            movies.add(m);
-//        });
-//        resultTwoJoins.sampleEnd();
+        movies.clear();
+        System.out.println("2 Joins...");
+        resultTwoJoins.sampleStart();
+        retrieveInfo.forEach((iterator) -> {
+            m = moviesDBM.retrieveTwoJoins(iterator[1], iterator[6], iterator[9], iterator[11], iterator[12], iterator[13], con);
+            movies.add(m);
+        });
+        resultTwoJoins.sampleEnd();
 
 //        movies.clear();
 //        System.out.println("3 Joins...");
