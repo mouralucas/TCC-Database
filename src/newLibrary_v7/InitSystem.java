@@ -19,7 +19,7 @@ public class InitSystem {
         con.setCon();
         con.closeCon();
 ////
-//        InsertData insertaDta = new InsertData();
+//       InsertData insertaDta = new InsertData();
 //        insertaDta.insertData();
 ////
 //        TestInsertBook insertBook = new TestInsertBook();
