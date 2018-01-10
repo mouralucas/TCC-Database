@@ -49,9 +49,6 @@ public class Countries implements Serializable {
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "movieCountry")
     private List<Movies> movies;
 
-    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "tvSerieCountry")
-    private List<TVSeries> tvSeries;
-
     /*----fim relações com filmes e series-------------*/
  /*--------------------Constructors-------------------*/
     public Countries() {
@@ -142,13 +139,5 @@ public class Countries implements Serializable {
 
     public void setMovies(List<Movies> movies) {
         this.movies = movies;
-    }
-
-    public List<TVSeries> getTvSeries() {
-        return tvSeries;
-    }
-
-    public void setTvSeries(List<TVSeries> tvSeries) {
-        this.tvSeries = tvSeries;
     }
 }

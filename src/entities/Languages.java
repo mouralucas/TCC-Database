@@ -30,10 +30,6 @@ public class Languages implements Serializable {
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "movieLanguage")
     private List<Movies> movies;
 
-    /*relaciona TVSeries com language*/
-    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "tvSerieLanguage")
-    private List<TVSeries> tvSeries;
-
     /*relaciona autor com lingua de escrita*/
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "authorLanguage")
     private List<Authors> authors;
@@ -42,11 +38,6 @@ public class Languages implements Serializable {
     @ManyToMany(mappedBy = "bookLanguages")
     private List<Books> books;
 
-    @ManyToMany(mappedBy = "mangaLanguages")
-    private List<Mangas> mangas;
-
-    @ManyToMany(mappedBy = "hqLanguages")
-    private List<HQS> hqs;
 
     /*--------------------Constructors-------------------*/
     public Languages() {
@@ -91,14 +82,6 @@ public class Languages implements Serializable {
         this.movies = movies;
     }
 
-    public List<TVSeries> getTvSeries() {
-        return tvSeries;
-    }
-
-    public void setTvSeries(List<TVSeries> tvSeries) {
-        this.tvSeries = tvSeries;
-    }
-
     public List<Authors> getAuthors() {
         return authors;
     }
@@ -113,21 +96,5 @@ public class Languages implements Serializable {
 
     public void setBooks(List<Books> books) {
         this.books = books;
-    }
-
-    public List<Mangas> getMangas() {
-        return mangas;
-    }
-
-    public void setMangas(List<Mangas> mangas) {
-        this.mangas = mangas;
-    }
-
-    public List<HQS> getHqs() {
-        return hqs;
-    }
-
-    public void setHqs(List<HQS> hqs) {
-        this.hqs = hqs;
     }
 }

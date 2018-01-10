@@ -43,19 +43,12 @@ public class Genres implements Serializable {
     @ManyToMany(mappedBy = "bookGenres")
     private List<Books> boooks;
 
-    @ManyToMany(mappedBy = "mangaGenres")
-    private List<Mangas> mangas;
-
-    @ManyToMany(mappedBy = "hqGenres")
-    private List<HQS> hqs;
     /*------Fim das Relações com publicações impressas-------*/
 
     /*----------Relações com Filmes e Séries-----------*/
     @ManyToMany(mappedBy = "movieGenres")
     private List<Movies> movies;
 
-    @ManyToMany(mappedBy = "tvSerieGenres")
-    private List<TVSeries> tvSeries;
 
     /*------Fim das Relações com Filmes e Séries-------*/
 
@@ -77,22 +70,6 @@ public class Genres implements Serializable {
         this.boooks = boooks;
     }
 
-    public List<Mangas> getMangas() {
-        return mangas;
-    }
-
-    public void setMangas(List<Mangas> mangas) {
-        this.mangas = mangas;
-    }
-
-    public List<HQS> getHqs() {
-        return hqs;
-    }
-
-    public void setHqs(List<HQS> hqs) {
-        this.hqs = hqs;
-    }
-
     public List<Movies> getMovies() {
         return movies;
     }
@@ -100,13 +77,4 @@ public class Genres implements Serializable {
     public void setMovies(List<Movies> movies) {
         this.movies = movies;
     }
-
-    public List<TVSeries> getTvSeries() {
-        return tvSeries;
-    }
-
-    public void setTvSeries(List<TVSeries> tvSeries) {
-        this.tvSeries = tvSeries;
-    }
-
 }

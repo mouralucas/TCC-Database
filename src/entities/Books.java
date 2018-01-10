@@ -77,8 +77,6 @@ public class Books implements Serializable {
     @ManyToMany(mappedBy = "movieBooks")
     private List<Movies> movies;
 
-    @ManyToMany(mappedBy = "tvSerieBooks")
-    private List<TVSeries> tvSeries;
 
     /*--------------------Constructors-------------------*/
     public Books() {
@@ -233,13 +231,4 @@ public class Books implements Serializable {
     public void setMovies(List<Movies> movies) {
         this.movies = movies;
     }
-
-    public List<TVSeries> getTvSeries() {
-        return tvSeries;
-    }
-
-    public void setTvSeries(List<TVSeries> tvSeries) {
-        this.tvSeries = tvSeries;
-    }
-
 }

@@ -34,12 +34,6 @@ public class Publishers implements Serializable {
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "bookPublisher")
     private List<Books> books;
 
-    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "mangaPublisher")
-    private List<Mangas> mangas;
-
-    @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "hqPublisher")
-    private List<HQS> hqs;
-
     /*--------------------Constructors-------------------*/
     public Publishers() {
     }
@@ -91,21 +85,4 @@ public class Publishers implements Serializable {
     public void setBooks(List<Books> books) {
         this.books = books;
     }
-
-    public List<Mangas> getMangas() {
-        return mangas;
-    }
-
-    public void setMangas(List<Mangas> mangas) {
-        this.mangas = mangas;
-    }
-
-    public List<HQS> getHqs() {
-        return hqs;
-    }
-
-    public void setHqs(List<HQS> hqs) {
-        this.hqs = hqs;
-    }
-
 }

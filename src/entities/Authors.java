@@ -41,12 +41,6 @@ public class Authors implements Serializable {
     @ManyToMany(mappedBy = "bookAuthors")
     private List<Books> books;
 
-    @ManyToMany(mappedBy = "mangaAuthors")
-    private List<Mangas> mangas;
-
-    @ManyToMany(mappedBy = "hqAuthors")
-    private List<HQS> hqs;
-
     /*--------------------Constructors-------------------*/
     public Authors() {
     }
@@ -107,21 +101,4 @@ public class Authors implements Serializable {
     public void setBooks(List<Books> books) {
         this.books = books;
     }
-
-    public List<Mangas> getMangas() {
-        return mangas;
-    }
-
-    public void setMangas(List<Mangas> mangas) {
-        this.mangas = mangas;
-    }
-
-    public List<HQS> getHqs() {
-        return hqs;
-    }
-
-    public void setHqs(List<HQS> hqs) {
-        this.hqs = hqs;
-    }
-
 }

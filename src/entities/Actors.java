@@ -34,9 +34,6 @@ public class Actors implements Serializable {
     @ManyToMany(mappedBy = "movieActors")
     private List<Movies> movies;
 
-    @ManyToMany(mappedBy = "tvSerieActors")
-    private List<TVSeries> tvSeries;
-
     /*--------------------Constructors-------------------*/
     public Actors() {
     }
@@ -88,13 +85,4 @@ public class Actors implements Serializable {
     public void setMovies(List<Movies> movies) {
         this.movies = movies;
     }
-
-    public List<TVSeries> getTvSeries() {
-        return tvSeries;
-    }
-
-    public void setTvSeries(List<TVSeries> tvSeries) {
-        this.tvSeries = tvSeries;
-    }
-
 }

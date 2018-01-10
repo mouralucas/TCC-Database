@@ -1,7 +1,6 @@
 package newLibrary_v7;
 
-import t_retrieve_join.Retrieve;
-import t_retrieve_join.TestRetrieveMovie10;
+import Conn.Connection;
 
 /**
  * @author Jociane Franzoni de Lima
@@ -16,9 +15,9 @@ public class InitSystem {
 
     public static void main(String args[]) {
 
-//        Connection con = new Connection();
-//        con.setCon();
-//        con.closeCon();
+        Connection con = new Connection();
+        con.setCon();
+        con.closeCon();
 ////
 //        InsertData insertaDta = new InsertData();
 //        insertaDta.insertData();
@@ -30,7 +29,7 @@ public class InitSystem {
 //        testeRetrieve trm = new testeRetrieve();
 //        trm.retrieve();
 
-       Retrieve r = new Retrieve();
-       r.testMethod();
+//       Retrieve r = new Retrieve();
+//       r.testMethod();
     }
 }

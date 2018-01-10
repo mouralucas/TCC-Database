@@ -34,8 +34,6 @@ public class Writers implements Serializable {
     @ManyToMany(mappedBy = "movieWriters")
     private List<Movies> movie;
 
-    @ManyToMany(mappedBy = "tvSerieWriters")
-    private List<TVSeries> tvSeries;
 
     /*--------------------Constructors-------------------*/
     public Writers() {
@@ -88,13 +86,4 @@ public class Writers implements Serializable {
     public void setMovie(List<Movies> movie) {
         this.movie = movie;
     }
-
-    public List<TVSeries> getTvSeries() {
-        return tvSeries;
-    }
-
-    public void setTvSeries(List<TVSeries> tvSeries) {
-        this.tvSeries = tvSeries;
-    }
-
 }

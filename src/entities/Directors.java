@@ -36,9 +36,6 @@ public class Directors implements Serializable {
     @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "movieDirector")
     private List<Movies> movies;
 
-    @ManyToMany(mappedBy = "tvSerieDirectors")
-    private List<TVSeries> tvSeries;
-
     /*--------------------Constructors-------------------*/
     public Directors() {
     }
@@ -90,13 +87,4 @@ public class Directors implements Serializable {
     public void setMovies(List<Movies> movies) {
         this.movies = movies;
     }
-
-    public List<TVSeries> getTvSeries() {
-        return tvSeries;
-    }
-
-    public void setTvSeries(List<TVSeries> tvSeries) {
-        this.tvSeries = tvSeries;
-    }
-
 }

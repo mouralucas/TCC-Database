@@ -34,9 +34,6 @@ public class Networks implements Serializable {
     @ManyToMany(mappedBy = "movieNetworks")
     private List<Movies> movies;
 
-    @ManyToMany(mappedBy = "tvSerieNetworks")
-    private List<TVSeries> tvSeries;
-
     /*--------------------Constructors-------------------*/
     public Networks() {
     }
@@ -88,13 +85,4 @@ public class Networks implements Serializable {
     public void setMovies(List<Movies> movies) {
         this.movies = movies;
     }
-
-    public List<TVSeries> getTvSeries() {
-        return tvSeries;
-    }
-
-    public void setTvSeries(List<TVSeries> tvSeries) {
-        this.tvSeries = tvSeries;
-    }
-
 }
